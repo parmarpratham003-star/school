@@ -30,35 +30,35 @@ export default function Proudnumbers() {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section className="w-full bg-white py-16 sm:py-20 font-[Outfit] overflow-hidden">
+    <section className="w-full bg-white py-8 sm:py-5 font-[Outfit] overflow-hidden">
       {/* Heading */}
       <div className="px-4 sm:px-6 lg:px-10 text-center mb-10 sm:mb-14">
         <p className="text-[#f97316] uppercase tracking-[4px] font-bold text-xs sm:text-sm mb-3">
           Our Achievements
         </p>
 
-        <h2 className="text-[#0f1e45] text-3xl sm:text-5xl lg:text-[56px] font-black leading-[1.08] mb-4">
+        <h2 className="text-[#0f1e45] text-4xl sm:text-4xl lg:text-[50px] font-black leading-[1.08] mb-4">
           We Proud Of This Numbers
         </h2>
 
-        <p className="text-gray-500 text-sm sm:text-base lg:text-lg leading-7 sm:leading-9 max-w-4xl mx-auto">
+        <p className="text-gray-500 text-sm sm:text-base lg:text-lg leading-5 sm:leading-5 max-w-4xl mx-auto">
           Online learning offers a new way to explore subjects you're passionate
           about. Find your interests by browsing our online course categories.
         </p>
       </div>
 
-      {/* Desktop Section */}
+      {/* Desktop */}
       <div className="hidden lg:block relative w-full h-[650px] overflow-hidden">
         {/* Background */}
         <div
-          className="absolute inset-0 bg-cover bg-center transition-all duration-700 scale-105"
+          className="absolute inset-0 bg-cover bg-center transition-all duration-500"
           style={{ backgroundImage: `url(${activeBg})` }}
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/35" />
+        <div className="absolute inset-0 bg-black/40" />
 
-        {/* Grid Lines */}
+        {/* Lines */}
         <div className="absolute inset-0 grid grid-cols-4 z-10">
           <div className="border-r border-white/20" />
           <div className="border-r border-white/20" />
@@ -79,16 +79,16 @@ export default function Proudnumbers() {
             style={{ left: `${i * 25}%` }}
           >
             {/* Hover Content */}
-            <div className="absolute inset-0 flex flex-col justify-center px-8 opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-              <h3 className="text-white text-5xl font-black leading-none mb-2">
+            <div className="absolute inset-0 flex flex-col justify-end px-8 pb-8 opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+              <h3 className="text-white text-4xl font-black leading-none mb-2">
                 {item.number}
               </h3>
 
-              <h4 className="text-white text-3xl font-bold mb-5">
+              <h4 className="text-white text-3xl font-bold mb-4">
                 {item.label}
               </h4>
 
-              <p className="text-gray-300 text-lg leading-8 max-w-[260px] mb-6">
+              <p className="text-gray-300 text-lg leading-7 max-w-[260px] mb-4">
                 Seitan High Life reprehenderit consectetur cupidatat kogi.
                 Et leggings fanny pack.
               </p>
@@ -98,13 +98,13 @@ export default function Proudnumbers() {
               </button>
             </div>
 
-            {/* Bottom Numbers */}
+            {/* Bottom Number */}
             <div
               className={`absolute left-8 bottom-8 z-30 transition-all duration-300 ${
-                hovered === i ? "opacity-0 translate-y-10" : "opacity-100"
+                hovered === i ? "opacity-0 translate-y-8" : "opacity-100"
               }`}
             >
-              <h3 className="text-white text-5xl font-black leading-none">
+              <h3 className="text-white text-4xl font-black leading-none">
                 {item.number}
               </h3>
 
@@ -124,7 +124,7 @@ export default function Proudnumbers() {
             className="relative h-[280px] rounded-sm overflow-hidden"
           >
             <div
-              className="absolute inset-0 bg-cover bg-center"
+              className="absolute inset-0 bg-cover bg-center transition-all duration-300 hover:scale-105"
               style={{ backgroundImage: `url(${item.img})` }}
             />
             <div className="absolute inset-0 bg-black/45" />
