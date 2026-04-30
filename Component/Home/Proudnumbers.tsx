@@ -2,26 +2,26 @@
 
 import { useState } from "react";
 
-export default function Proudnumbers() {
+export default function TransformationSection() {
   const stats = [
     {
-      number: "2000+",
-      label: "Students",
-      img: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1800&q=80",
+      title: "Learn",
+      label: "Gain practical skills with industry focused training.",
+      img: "https://plus.unsplash.com/premium_photo-1661661139398-9f360bea5b48?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
-      number: "1000+",
-      label: "Courses",
+      title: "Practice",
+      label: "Work on real projects and improve confidence.",
       img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1800&q=80",
     },
     {
-      number: "2400+",
-      label: "Videos",
+      title: "Build",
+      label: "Create your portfolio and showcase experience.",
       img: "https://images.unsplash.com/photo-1513258496099-48168024aec0?w=1800&q=80",
     },
     {
-      number: "75+",
-      label: "Countries",
+      title: "Succeed",
+      label: "Become career ready and achieve your goals.",
       img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1800&q=80",
     },
   ];
@@ -30,35 +30,71 @@ export default function Proudnumbers() {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section className="w-full bg-white py-8 sm:py-5 font-[Outfit] overflow-hidden">
+    <section className="w-full bg-white py-2 sm:py-4 overflow-hidden">
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Italiana&family=Lato:wght@300;400;500;600;700;800&display=swap');
+
+        @font-face{
+          font-family:'Salina';
+          src:local('Salina');
+        }
+
+        .hero-font{
+          font-family:'Salina','Italiana',serif;
+          letter-spacing:.04em;
+        }
+
+        /* NEW PROFESSIONAL ANIMATION */
+        @keyframes smoothFade {
+          0%{
+            opacity:0;
+            transform:translateY(25px) scale(1.03);
+          }
+          100%{
+            opacity:1;
+            transform:translateY(0) scale(1);
+          }
+        }
+      `}</style>
+
       {/* Heading */}
-      <div className="px-4 sm:px-6 lg:px-10 text-center mb-10 sm:mb-14">
-        <p className="text-[#f97316] uppercase tracking-[4px] font-bold text-xs sm:text-sm mb-3">
-          Our Achievements
+      <div className="px-4 sm:px-6 lg:px-10 text-center mb-6 sm:mb-8">
+        <p className="text-[#f97316] uppercase tracking-[5px] font-bold text-[11px] sm:text-sm mb-2">
+          Transformation Section
         </p>
 
-        <h2 className="text-[#0f1e45] text-4xl sm:text-4xl lg:text-[50px] font-black leading-[1.08] mb-4">
-          We Proud Of This Numbers
+        <h2 className="hero-font text-[#0f1e45] text-3xl sm:text-4xl lg:text-[48px] font-bold leading-[1.02] mb-3">
+          We Don’t Believe In Just Teaching
+          <br />
+          We Believe In Transforming
         </h2>
 
-        <p className="text-gray-500 text-sm sm:text-base lg:text-lg leading-5 sm:leading-5 max-w-4xl mx-auto">
-          Online learning offers a new way to explore subjects you're passionate
-          about. Find your interests by browsing our online course categories.
+        <p className="text-gray-500 text-sm sm:text-base lg:text-lg leading-6 sm:leading-7 max-w-4xl mx-auto">
+          In today’s competitive world certificates are not enough. What matters
+          is what you can actually do.
+          <span className="font-bold text-[#0f1e45]">
+            {" "}
+            Learn. Practice. Build. Succeed.
+          </span>
         </p>
       </div>
 
-      {/* Desktop */}
+      {/* Desktop Section */}
       <div className="hidden lg:block relative w-full h-[650px] overflow-hidden">
         {/* Background */}
         <div
-          className="absolute inset-0 bg-cover bg-center transition-all duration-500"
-          style={{ backgroundImage: `url(${activeBg})` }}
+          key={activeBg}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${activeBg})`,
+            animation: "smoothFade .7s ease forwards",
+          }}
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/45" />
 
-        {/* Lines */}
+        {/* Grid */}
         <div className="absolute inset-0 grid grid-cols-4 z-10">
           <div className="border-r border-white/20" />
           <div className="border-r border-white/20" />
@@ -66,31 +102,28 @@ export default function Proudnumbers() {
           <div />
         </div>
 
-        {/* Hover Areas */}
+        {/* Hover Columns */}
         {stats.map((item, i) => (
           <div
             key={i}
+            className="group absolute top-0 h-full w-1/4 z-20"
+            style={{ left: `${i * 25}%` }}
             onMouseEnter={() => {
               setActiveBg(item.img);
               setHovered(i);
             }}
             onMouseLeave={() => setHovered(null)}
-            className="group absolute top-0 h-full w-1/4 z-20"
-            style={{ left: `${i * 25}%` }}
           >
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/35 transition-all duration-500" />
+
             {/* Hover Content */}
             <div className="absolute inset-0 flex flex-col justify-end px-8 pb-8 opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-              <h3 className="text-white text-4xl font-black leading-none mb-2">
-                {item.number}
+              <h3 className="hero-font text-white text-5xl font-bold mb-3">
+                {item.title}
               </h3>
 
-              <h4 className="text-white text-3xl font-bold mb-4">
+              <p className="text-gray-300 text-lg leading-7 max-w-[260px] mb-5">
                 {item.label}
-              </h4>
-
-              <p className="text-gray-300 text-lg leading-7 max-w-[260px] mb-4">
-                Seitan High Life reprehenderit consectetur cupidatat kogi.
-                Et leggings fanny pack.
               </p>
 
               <button className="border border-white text-white px-7 py-3 rounded-[4px] font-bold text-sm w-fit hover:bg-white hover:text-[#0f1e45] transition-all duration-300">
@@ -98,69 +131,19 @@ export default function Proudnumbers() {
               </button>
             </div>
 
-            {/* Bottom Number */}
+            {/* Default Text */}
             <div
-              className={`absolute left-8 bottom-8 z-30 transition-all duration-300 ${
-                hovered === i ? "opacity-0 translate-y-8" : "opacity-100"
+              className={`absolute left-8 bottom-8 z-30 transition-all duration-500 ${
+                hovered === i
+                  ? "opacity-0 translate-y-8"
+                  : "opacity-100 translate-y-0"
               }`}
             >
-              <h3 className="text-white text-4xl font-black leading-none">
-                {item.number}
+              <h3 className="hero-font text-white text-4xl font-bold">
+                {item.title}
               </h3>
 
-              <p className="text-white text-2xl font-bold mt-2">
-                {item.label}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Tablet */}
-      <div className="hidden sm:grid lg:hidden grid-cols-2 gap-5 px-4 sm:px-6">
-        {stats.map((item, i) => (
-          <div
-            key={i}
-            className="relative h-[280px] rounded-sm overflow-hidden"
-          >
-            <div
-              className="absolute inset-0 bg-cover bg-center transition-all duration-300 hover:scale-105"
-              style={{ backgroundImage: `url(${item.img})` }}
-            />
-            <div className="absolute inset-0 bg-black/45" />
-
-            <div className="absolute left-5 bottom-5 z-10">
-              <h3 className="text-white text-4xl font-black leading-none">
-                {item.number}
-              </h3>
-              <p className="text-white text-xl font-bold mt-2">
-                {item.label}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Mobile */}
-      <div className="grid sm:hidden grid-cols-1 gap-4 px-4">
-        {stats.map((item, i) => (
-          <div
-            key={i}
-            className="relative h-[220px] rounded-sm overflow-hidden"
-          >
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url(${item.img})` }}
-            />
-            <div className="absolute inset-0 bg-black/45" />
-
-            <div className="absolute left-5 bottom-5 z-10">
-              <h3 className="text-white text-3xl font-black leading-none">
-                {item.number}
-              </h3>
-              <p className="text-white text-lg font-bold mt-2">
-                {item.label}
-              </p>
+              <p className="text-white text-lg mt-2">{item.label}</p>
             </div>
           </div>
         ))}

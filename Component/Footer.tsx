@@ -15,7 +15,16 @@ const FacebookIcon = () => (
 );
 
 const InstagramIcon = () => (
-  <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    viewBox="0 0 24 24"
+    width="17"
+    height="17"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
     <circle cx="12" cy="12" r="4" />
     <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
@@ -44,19 +53,54 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full bg-[#0f1e45] text-white font-[Outfit]">
-      {/* Top Section */}
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer className="w-full bg-[#0f1e45] text-white">
+      {/* ONLY FONT STYLE CHANGED */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Italiana&family=Lato:wght@300;400;500;600;700;800;900&display=swap');
 
-          {/* Logo Section — slides from LEFT */}
+        @font-face{
+          font-family:'Salina';
+          src:local('Salina');
+        }
+
+        .hero-font{
+          font-family:'Salina','Italiana',serif;
+          letter-spacing:.05em;
+        }
+
+        .body-font{
+          font-family:'Lato',sans-serif;
+        }
+
+        @keyframes slideLeft {
+          from { opacity: 0; transform: translateX(-40px); }
+          to   { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideRight {
+          from { opacity: 0; transform: translateX(40px); }
+          to   { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes shine {
+          0%   { background-position: 160% center; }
+          100% { background-position: -20% center; }
+        }
+      `}</style>
+
+      {/* Top Section */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 py-14 body-font">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Logo */}
           <div className="animate-[slideLeft_0.6s_cubic-bezier(0.22,1,0.36,1)_both]">
             <div className="flex items-center gap-3 mb-5">
               <div className="w-[42px] h-[42px] rounded-[3px] bg-[#f97316] flex items-center justify-center shadow-[0_4px_14px_rgba(249,115,22,0.35)]">
                 <GraduationCap size={22} className="text-white" />
               </div>
-              <h2 className="text-[24px] font-black tracking-tight">
-                EDUWAVE<span className="text-[#f97316]"></span>
+
+              {/* SAME HERO FONT */}
+              <h2 className="hero-font text-[24px] font-bold tracking-tight">
+                EDUWAVE
               </h2>
             </div>
 
@@ -65,7 +109,6 @@ export default function Footer() {
               and future-ready learning in a modern environment.
             </p>
 
-            {/* Social Icons with shine hover */}
             <div className="flex items-center gap-3 mt-6">
               {socialIcons.map(({ icon: Icon, href }, i) => (
                 <a
@@ -80,9 +123,12 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links — slides from LEFT with delay */}
+          {/* Quick Links */}
           <div className="animate-[slideLeft_0.6s_cubic-bezier(0.22,1,0.36,1)_100ms_both]">
-            <h3 className="text-[18px] font-bold mb-5">Quick Links</h3>
+            <h3 className="hero-font text-[22px] font-bold mb-5">
+              Quick Links
+            </h3>
+
             <ul className="space-y-3 text-slate-300">
               {["Home", "About Us", "Courses", "Contact"].map((item, i) => (
                 <li key={i}>
@@ -97,9 +143,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* School Programs — slides from RIGHT with delay */}
+          {/* Programs */}
           <div className="animate-[slideRight_0.6s_cubic-bezier(0.22,1,0.36,1)_100ms_both]">
-            <h3 className="text-[18px] font-bold mb-5">School Programs</h3>
+            <h3 className="hero-font text-[22px] font-bold mb-5">
+              School Programs
+            </h3>
+
             <ul className="space-y-3 text-slate-300">
               {[
                 "Primary Education",
@@ -120,18 +169,23 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info — slides from RIGHT */}
+          {/* Contact */}
           <div className="animate-[slideRight_0.6s_cubic-bezier(0.22,1,0.36,1)_both]">
-            <h3 className="text-[18px] font-bold mb-5">Contact Info</h3>
+            <h3 className="hero-font text-[22px] font-bold mb-5">
+              Contact Info
+            </h3>
+
             <div className="space-y-4 text-slate-300 text-[15px]">
               <div className="flex items-start gap-3">
                 <MapPin size={18} className="text-[#f97316] mt-1 shrink-0" />
                 <p>Ahmedabad, Gujarat, India</p>
               </div>
+
               <div className="flex items-center gap-3">
                 <Phone size={18} className="text-[#f97316] shrink-0" />
                 <p>+91 98765 43210</p>
               </div>
+
               <div className="flex items-center gap-3">
                 <Mail size={18} className="text-[#f97316] shrink-0" />
                 <p>info@eduwave.com</p>
@@ -143,39 +197,21 @@ export default function Footer() {
                 Enroll Now
                 <ArrowUpRight size={15} />
               </span>
+
               <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-500 bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.3)_50%,transparent_100%)] skew-x-[-20deg]" />
             </button>
           </div>
         </div>
       </div>
 
-      {/* Bottom Footer */}
-      <div className="border-t border-white/10">
+      {/* Bottom */}
+      <div className="border-t border-white/10 body-font">
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-5 flex flex-col md:flex-row items-center justify-center gap-3">
           <p className="text-slate-400 text-[14px]">
             © 2026 EDUWAVE. All Rights Reserved.
           </p>
         </div>
       </div>
-
-      <style jsx global>{`
-        @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap");
-
-        @keyframes slideLeft {
-          from { opacity: 0; transform: translateX(-40px); }
-          to   { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes slideRight {
-          from { opacity: 0; transform: translateX(40px); }
-          to   { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes shine {
-          0%   { background-position: 160% center; }
-          100% { background-position: -20% center; }
-        }
-      `}</style>
     </footer>
   );
 }
