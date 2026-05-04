@@ -17,15 +17,15 @@ const slides = [
     title1: "Where Skills Turn Into",
     title2: "Successful Careers",
     desc:
-      "A generation learning platform designed to bridge the gap between education and industry. Learn in-demand skills, work on real projects, and build a future powered by experience.",
+      "We believe education should go beyond textbooks. Our learning approach helps students connect classroom knowledge with real life understanding in a simple and meaningful way. Our school provides a modern and balanced learning environment where students gain knowledge through understanding, practice, and real life examples.",
   },
   {
     img: "hero2.png",
     tag: "START LEARNING TODAY",
-    title1: "Education Meets",
-    title2: "Real Industry Skills",
+    title1: "Where Skills Turn Into",
+    title2: "Successful Careers",
     desc:
-      "Gain in-demand skills through practical training, expert mentorship, and real projects designed to make you future ready.",
+      "We believe education should go beyond textbooks. Our learning approach helps students connect classroom knowledge with real life understanding in a simple and meaningful way. Our school provides a modern and balanced learning environment where students gain knowledge through understanding, practice, and real life examples.",
   },
 ];
 

@@ -33,6 +33,7 @@ export default function TransformationSection() {
     <section className="w-full bg-white py-8 sm:py-16 overflow-hidden">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Italiana&family=Lato:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap');
 
         @font-face{
           font-family:'Salina';
@@ -42,6 +43,10 @@ export default function TransformationSection() {
         .hero-font{
           font-family:'Salina','Italiana',serif;
           letter-spacing:.04em;
+        }
+
+        .nexa-font{
+          font-family:'Cormorant Garamond', serif;
         }
 
         @keyframes smoothFade {
@@ -62,7 +67,8 @@ export default function TransformationSection() {
           Transformation Section
         </p>
 
-        <h2 className="hero-font text-[#0f1e45] text-2xl sm:text-4xl lg:text-[48px] font-bold leading-[1.2] sm:leading-[1.05] mb-3">
+        {/* ✅ Updated Font Here */}
+        <h2 className="nexa-font text-[#0f1e45] text-2xl sm:text-4xl lg:text-[48px] font-[500] leading-[1.3] tracking-[0.02em] mb-3">
           We Don’t Believe In Just Teaching
           <br className="hidden sm:block" />
           We Believe In Transforming
@@ -72,7 +78,7 @@ export default function TransformationSection() {
           In today’s competitive world certificates are not enough. What matters
           is what you can actually do.<br/>
           <span className="font-bold text-[#0f1e45]">
-          Learn. Practice. Build. Succeed.
+            Learn. Practice. Build. Succeed.
           </span>
         </p>
       </div>
@@ -80,20 +86,13 @@ export default function TransformationSection() {
       {/* ================= MOBILE VIEW ================= */}
       <div className="lg:hidden px-4 space-y-5">
         {stats.map((item, i) => (
-          <div
-            key={i}
-            className="relative rounded-xl overflow-hidden shadow-md"
-          >
-            {/* Background */}
+          <div key={i} className="relative rounded-xl overflow-hidden shadow-md">
             <div
               className="h-[220px] bg-cover bg-center"
               style={{ backgroundImage: `url(${item.img})` }}
             />
-
-            {/* Overlay */}
             <div className="absolute inset-0 bg-black/40" />
 
-            {/* Content */}
             <div className="absolute inset-0 flex flex-col justify-end p-4">
               <h3 className="hero-font text-white text-2xl font-bold mb-1">
                 {item.title}
@@ -103,7 +102,7 @@ export default function TransformationSection() {
                 {item.label}
               </p>
 
-              <button className="bg-white text-[#0f1e45] px-4 py-2 text-xs font-bold rounded w-fit hover:bg-[#0f1e45] hover:text-white transition">
+              <button className="bg-white text-[#0f1e45] px-4 py-2 text-xs font-bold rounded w-fit hover:bg-[#0f224a] hover:text-white transition">
                 Learn More
               </button>
             </div>
@@ -113,6 +112,7 @@ export default function TransformationSection() {
 
       {/* ================= DESKTOP VIEW ================= */}
       <div className="hidden lg:block relative w-full h-[650px] overflow-hidden">
+        
         {/* Background */}
         <div
           key={activeBg}

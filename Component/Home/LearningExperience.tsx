@@ -67,10 +67,10 @@ export default function LearningExperience() {
   return (
     <>
       <style jsx>{`
-        @import url("https://fonts.googleapis.com/css2?family=Italiana&family=Lato:wght@300;400;500;600;700;800;900&display=swap");
-
+        @import url("https://fonts.googleapis.com/css2?family=Italiana&family=Lato:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600&display=swap");
+        
         * { font-family: "Lato", sans-serif; }
-        .hero-title { font-family: "Italiana", serif; letter-spacing: 0.05em; }
+        .hero-title { font-family: "Cormorant Garamond", serif; letter-spacing: 0.02em; }
 
         .le-from-top {
           opacity: 0;
@@ -172,14 +172,14 @@ export default function LearningExperience() {
           {/* Heading */}
           <div className="text-center mb-10 sm:mb-12 lg:mb-14">
             <p
-              className="le-heading-anim le-from-top text-orange-500 uppercase tracking-[4px] font-extrabold text-xs sm:text-sm"
+              className="le-heading-anim le-from-top text-orange-500 uppercase tracking-[4px]  text-xs sm:text-sm"
               data-delay="0"
             >
               LEARNING EXPERIENCE
             </p>
 
             <h2
-              className="le-heading-anim le-from-top hero-title text-[#0f224a] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mt-3 leading-tight"
+              className="le-heading-anim le-from-top hero-title text-[#0f224a] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-[500] mt-3 leading-tight"
               data-delay="100"
             >
               Every course is designed to feel like
@@ -235,7 +235,7 @@ export default function LearningExperience() {
                     <span className="le-tag block text-xs sm:text-sm tracking-[3px] uppercase text-white/70 mb-3">
                       {item.tag}
                     </span>
-                    <h3 className="le-title hero-title text-2xl sm:text-3xl font-black leading-tight mb-3 sm:mb-5">
+                    <h3 className="le-title hero-title text-2xl sm:text-3xl font-[500] leading-tight mb-3 sm:mb-5">
                       {item.title}
                     </h3>
                     <p className="le-desc text-white/75 text-sm sm:text-base leading-6 sm:leading-7">

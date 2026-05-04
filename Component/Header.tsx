@@ -58,10 +58,10 @@ export default function Header() {
         `}</style>
 
         <div className="px-4 sm:px-6 lg:px-10">
-          <div className="h-[82px] flex items-center justify-between gap-8">
+          <div className="h-[65px] flex items-center justify-between gap-8">
             {/* Logo */}
             <a href="#" className="flex items-center gap-3 shrink-0 no-underline">
-              <div className="w-[42px] h-[42px] rounded-[3px] flex items-center justify-center bg-[#f97316] shadow-[0_4px_14px_rgba(249,115,22,0.35)]">
+              <div className="w-[42px] h-[42px] rounded-[3px] flex items-center justify-center bg-[#f97316]">
                 <GraduationCap className="text-white" size={22} />
               </div>
 
@@ -88,7 +88,7 @@ export default function Header() {
             </nav>
 
             {/* CTA */}
-            <button className="hidden lg:inline-flex group relative overflow-hidden items-center gap-2 px-7 py-3 rounded-[3px] text-[13px] font-bold uppercase tracking-[0.05em] bg-[#0f1e45] text-white border-2 border-[#0f1e45] hover:bg-white hover:text-[#f97316] hover:border-[#f97316] transition-all duration-300 body-font">
+            <button className="hidden lg:inline-flex group relative overflow-hidden items-center gap-2 px-5 py-3 rounded-[3px] text-[13px] font-bold uppercase tracking-[0.05em] bg-[#0f1e45] text-white border-2 border-[#0f1e45] hover:bg-white hover:text-[#f97316] hover:border-[#f97316] transition-all duration-300 body-font">
               <span>Find Courses</span>
 
               <ArrowUpRight
