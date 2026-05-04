@@ -29,24 +29,6 @@ const slides = [
   },
 ];
 
-const cards = [
-  {
-    icon: BookOpen,
-    title: "5,320 online courses",
-    sub: "Enjoy a variety of fresh topics",
-  },
-  {
-    icon: Settings,
-    title: "Expert instruction",
-    sub: "Find the right instructor",
-  },
-  {
-    icon: Clock3,
-    title: "Lifetime access",
-    sub: "Learn on your schedule",
-  },
-];
-
 export default function Hero() {
   const [current, setCurrent] = useState(0);
   const [next, setNext] = useState<number | null>(null);
@@ -135,14 +117,15 @@ export default function Hero() {
       `}</style>
 
       <section className="relative w-full overflow-hidden">
-        <div className="relative h-[90vh] min-h-[700px] max-h-[950px] overflow-hidden">
+        <div className="relative h-[85vh] sm:h-[90vh] min-h-[520px] sm:min-h-[700px] max-h-[950px] overflow-hidden">
+          
           {/* Background */}
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${active.img})` }}
           />
 
-          {/* Slide */}
+          {/* Slide Animation */}
           {incoming && animate && (
             <div
               className="absolute inset-0 bg-cover bg-center z-10"
@@ -158,19 +141,19 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/50 z-20" />
 
           {/* Content */}
-          <div className="relative z-30 h-full flex items-center justify-center text-center px-4 sm:px-6 lg:px-10 pb-40">
+          <div className="relative z-30 h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-10">
             <div className="max-w-4xl">
               {showText && (
                 <>
                   <p
-                    className="text-orange-500 uppercase tracking-[4px] font-extrabold text-xs sm:text-sm mb-4"
+                    className="text-orange-500 uppercase tracking-[3px] sm:tracking-[4px] font-extrabold text-[10px] sm:text-sm mb-3 sm:mb-4"
                     style={{ animation: "slideInLeft .5s ease forwards" }}
                   >
                     {active.tag}
                   </p>
 
                   <h1
-                    className="hero-title text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-[1.1] mb-5"
+                    className="hero-title text-white text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-[1.2] sm:leading-[1.1] mb-4 sm:mb-5"
                     style={{
                       animation:
                         "letterDrop .75s cubic-bezier(0.34,1.56,0.64,1) forwards",
@@ -182,25 +165,22 @@ export default function Hero() {
                   </h1>
 
                   <p
-                    className="text-gray-200 text-sm sm:text-base md:text-lg font-medium leading-7 sm:leading-8 max-w-3xl mx-auto mb-8"
+                    className="text-gray-200 text-sm sm:text-base md:text-lg font-medium leading-6 sm:leading-8 max-w-xl sm:max-w-3xl mx-auto mb-6 sm:mb-8 px-2"
                     style={{ animation: "scaleReveal .7s ease .3s both" }}
                   >
                     {active.desc}
                   </p>
 
                   <div
-                    className="flex flex-col sm:flex-row items-center justify-center gap-4"
+                    className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto"
                     style={{ animation: "fadeRise .7s ease .5s both" }}
                   >
-                    <button className="group bg-orange-500 hover:bg-white hover:text-orange-500 text-white px-8 sm:px-10 py-3 font-extrabold uppercase text-sm rounded-sm inline-flex items-center gap-2 transition-all duration-300">
+                    <button className="w-full sm:w-auto bg-orange-500 hover:bg-white hover:text-orange-500 text-white px-6 sm:px-10 py-3 font-extrabold uppercase text-xs sm:text-sm rounded-sm inline-flex items-center justify-center gap-2 transition-all duration-300">
                       Explore Programs
-                      <ArrowUpRight
-                        size={18}
-                        className="transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                      />
+                      <ArrowUpRight size={18} />
                     </button>
 
-                    <button className="border border-white text-white hover:bg-white hover:text-[#0f224a] px-8 sm:px-10 py-3 font-extrabold uppercase text-sm rounded-sm transition-all duration-300">
+                    <button className="w-full sm:w-auto border border-white text-white hover:bg-white hover:text-[#0f224a] px-6 sm:px-10 py-3 font-extrabold uppercase text-xs sm:text-sm rounded-sm transition-all duration-300">
                       Start Learning Today
                     </button>
                   </div>
@@ -209,49 +189,24 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Arrows */}
+          {/* Arrows (Hidden on Mobile) */}
           <button
             onClick={prevSlide}
-            className="absolute left-4 sm:left-7 top-1/2 -translate-y-1/2 z-40 w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/10 bg-black/20 text-white flex items-center justify-center hover:bg-orange-500 transition-all"
+            className="hidden sm:flex absolute left-7 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full border border-white/10 bg-black/20 text-white items-center justify-center hover:bg-orange-500 transition-all"
           >
             <ChevronLeft size={20} />
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute right-4 sm:right-7 top-1/2 -translate-y-1/2 z-40 w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/10 bg-black/20 text-white flex items-center justify-center hover:bg-orange-500 transition-all"
+            className="hidden sm:flex absolute right-7 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full border border-white/10 bg-black/20 text-white items-center justify-center hover:bg-orange-500 transition-all"
           >
             <ChevronRight size={20} />
           </button>
-
-          {/* Small Cards UP */}
-          <div className="absolute left-0 bottom-0 w-full px-4 sm:px-6 lg:px-10 z-50 translate-y-[-25%] sm:translate-y-[-40%]">
-            <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {cards.map(({ icon: Icon, title, sub }, i) => (
-                <div
-                  key={i}
-                  className="bg-[#0f224a] hover:bg-[#132d60] rounded-md px-6 py-6 flex items-center gap-5 min-h-[98px] shadow-2xl border border-white/5 hover:-translate-y-1 transition-all duration-300"
-                >
-                  <div className="w-[52px] h-[52px] rounded-md border border-orange-500/50 bg-orange-500/10 flex items-center justify-center shrink-0">
-                    <Icon size={22} className="text-orange-500" />
-                  </div>
-
-                  <div>
-                    <h3 className="text-white font-bold text-[16px] mb-1">
-                      {title}
-                    </h3>
-                    <p className="text-white/55 text-[13px] leading-5">
-                      {sub}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
 
-        {/* Spacer */}
-        <div className="h-[320px] sm:h-[100px] bg-white" />
+        {/* Bottom Spacer */}
+      
       </section>
     </>
   );

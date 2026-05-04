@@ -7,22 +7,22 @@ export default function TransformationSection() {
     {
       title: "Learn",
       label: "Gain practical skills with industry focused training.",
-      img: "https://plus.unsplash.com/premium_photo-1661661139398-9f360bea5b48?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      img: "W1.png",
     },
     {
       title: "Practice",
       label: "Work on real projects and improve confidence.",
-      img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1800&q=80",
+      img: "W2.png",
     },
     {
       title: "Build",
       label: "Create your portfolio and showcase experience.",
-      img: "https://images.unsplash.com/photo-1513258496099-48168024aec0?w=1800&q=80",
+      img: "W3.png",
     },
     {
       title: "Succeed",
       label: "Become career ready and achieve your goals.",
-      img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1800&q=80",
+      img: "W4.png",
     },
   ];
 
@@ -30,7 +30,7 @@ export default function TransformationSection() {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section className="w-full bg-white py-2 sm:py-4 overflow-hidden">
+    <section className="w-full bg-white py-8 sm:py-16 overflow-hidden">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Italiana&family=Lato:wght@300;400;500;600;700;800&display=swap');
 
@@ -44,7 +44,6 @@ export default function TransformationSection() {
           letter-spacing:.04em;
         }
 
-        /* NEW PROFESSIONAL ANIMATION */
         @keyframes smoothFade {
           0%{
             opacity:0;
@@ -58,28 +57,61 @@ export default function TransformationSection() {
       `}</style>
 
       {/* Heading */}
-      <div className="px-4 sm:px-6 lg:px-10 text-center mb-6 sm:mb-8">
-        <p className="text-[#f97316] uppercase tracking-[5px] font-bold text-[11px] sm:text-sm mb-2">
+      <div className="px-4 sm:px-6 lg:px-10 text-center mb-8 sm:mb-10">
+        <p className="text-[#f97316] uppercase tracking-[3px] sm:tracking-[5px] font-bold text-[10px] sm:text-sm mb-2">
           Transformation Section
         </p>
 
-        <h2 className="hero-font text-[#0f1e45] text-3xl sm:text-4xl lg:text-[48px] font-bold leading-[1.02] mb-3">
+        <h2 className="hero-font text-[#0f1e45] text-2xl sm:text-4xl lg:text-[48px] font-bold leading-[1.2] sm:leading-[1.05] mb-3">
           We Don’t Believe In Just Teaching
-          <br />
+          <br className="hidden sm:block" />
           We Believe In Transforming
         </h2>
 
-        <p className="text-gray-500 text-sm sm:text-base lg:text-lg leading-6 sm:leading-7 max-w-4xl mx-auto">
+        <p className="text-gray-500 text-sm sm:text-base lg:text-lg leading-6 sm:leading-7 max-w-2xl sm:max-w-4xl mx-auto px-2">
           In today’s competitive world certificates are not enough. What matters
-          is what you can actually do.
+          is what you can actually do.<br/>
           <span className="font-bold text-[#0f1e45]">
-            {" "}
-            Learn. Practice. Build. Succeed.
+          Learn. Practice. Build. Succeed.
           </span>
         </p>
       </div>
 
-      {/* Desktop Section */}
+      {/* ================= MOBILE VIEW ================= */}
+      <div className="lg:hidden px-4 space-y-5">
+        {stats.map((item, i) => (
+          <div
+            key={i}
+            className="relative rounded-xl overflow-hidden shadow-md"
+          >
+            {/* Background */}
+            <div
+              className="h-[220px] bg-cover bg-center"
+              style={{ backgroundImage: `url(${item.img})` }}
+            />
+
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/40" />
+
+            {/* Content */}
+            <div className="absolute inset-0 flex flex-col justify-end p-4">
+              <h3 className="hero-font text-white text-2xl font-bold mb-1">
+                {item.title}
+              </h3>
+
+              <p className="text-gray-200 text-sm leading-5 mb-3">
+                {item.label}
+              </p>
+
+              <button className="bg-white text-[#0f1e45] px-4 py-2 text-xs font-bold rounded w-fit hover:bg-[#0f1e45] hover:text-white transition">
+                Learn More
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* ================= DESKTOP VIEW ================= */}
       <div className="hidden lg:block relative w-full h-[650px] overflow-hidden">
         {/* Background */}
         <div
