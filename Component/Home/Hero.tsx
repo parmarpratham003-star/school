@@ -5,9 +5,6 @@ import {
   ChevronLeft,
   ChevronRight,
   ArrowUpRight,
-  BookOpen,
-  Settings,
-  Clock3,
 } from "lucide-react";
 
 const slides = [
@@ -73,52 +70,50 @@ export default function Hero() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Italiana&family=Lato:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@700;800;900&display=swap');
 
-        @font-face{
-          font-family:'Salina';
-          src:local('Salina');
-        }
+  * {
+    font-family: 'Lato', sans-serif;
+  }
 
-        *{
-          font-family:'Lato',sans-serif;
-        }
+  .hero-title {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: -0.01em;
+  }
 
-        .hero-title{
-          font-family:'Salina','Italiana',serif;
-          letter-spacing:0.06em;
-        }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
 
-        @keyframes slideUp{
-          from{transform:translateY(100%)}
-          to{transform:translateY(0)}
-        }
+  @keyframes letterDrop {
+    0%   { opacity: 0; transform: translateY(-40px) rotateX(90deg); }
+    60%  { transform: translateY(4px) rotateX(-10deg); }
+    100% { opacity: 1; transform: translateY(0) rotateX(0); }
+  }
 
-        @keyframes letterDrop{
-          0%{opacity:0;transform:translateY(-40px) rotateX(90deg)}
-          60%{transform:translateY(4px) rotateX(-10deg)}
-          100%{opacity:1;transform:translateY(0) rotateX(0)}
-        }
+  @keyframes scaleReveal {
+    from { opacity: 0; transform: scale(1.08); filter: blur(4px); }
+    to   { opacity: 1; transform: scale(1); filter: blur(0); }
+  }
 
-        @keyframes scaleReveal{
-          from{opacity:0;transform:scale(1.08);filter:blur(4px)}
-          to{opacity:1;transform:scale(1);filter:blur(0)}
-        }
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
 
-        @keyframes slideInLeft{
-          from{opacity:0;transform:translateX(-30px)}
-          to{opacity:1;transform:translateX(0)}
-        }
-
-        @keyframes fadeRise{
-          from{opacity:0;transform:translateY(22px)}
-          to{opacity:1;transform:translateY(0)}
-        }
-      `}</style>
+  @keyframes fadeRise {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+`}</style>
 
       <section className="relative w-full overflow-hidden">
         <div className="relative h-[85vh] sm:h-[90vh] min-h-[520px] sm:min-h-[700px] max-h-[950px] overflow-hidden">
-          
+
           {/* Background */}
           <div
             className="absolute inset-0 bg-cover bg-center"
@@ -140,9 +135,9 @@ export default function Hero() {
           <div className="absolute inset-0 bg-black/55 z-20" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/50 z-20" />
 
-          {/* Content */}
+          {/* Content — centered, same horizontal padding as header */}
           <div className="relative z-30 h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-10">
-            <div className="max-w-4xl">
+            <div className="max-w-4xl w-full">
               {showText && (
                 <>
                   <p
@@ -153,7 +148,7 @@ export default function Hero() {
                   </p>
 
                   <h1
-                    className="hero-title text-white text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-[1.2] sm:leading-[1.1] mb-4 sm:mb-5"
+                    className="hero-title text-white text-xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.2] sm:leading-[1.1] mb-4 sm:mb-5"
                     style={{
                       animation:
                         "letterDrop .75s cubic-bezier(0.34,1.56,0.64,1) forwards",
@@ -189,24 +184,21 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Arrows (Hidden on Mobile) */}
+          {/* Arrows — inside header padding */}
           <button
             onClick={prevSlide}
-            className="hidden sm:flex absolute left-7 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full border border-white/10 bg-black/20 text-white items-center justify-center hover:bg-orange-500 transition-all"
+            className="hidden sm:flex absolute top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full border border-white/10 bg-black/20 text-white items-center justify-center hover:bg-orange-500 transition-all left-4 sm:left-6 lg:left-10"
           >
             <ChevronLeft size={20} />
           </button>
 
           <button
             onClick={nextSlide}
-            className="hidden sm:flex absolute right-7 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full border border-white/10 bg-black/20 text-white items-center justify-center hover:bg-orange-500 transition-all"
+            className="hidden sm:flex absolute top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full border border-white/10 bg-black/20 text-white items-center justify-center hover:bg-orange-500 transition-all right-4 sm:right-6 lg:right-10"
           >
             <ChevronRight size={20} />
           </button>
         </div>
-
-        {/* Bottom Spacer */}
-      
       </section>
     </>
   );

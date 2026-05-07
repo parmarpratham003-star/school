@@ -6,39 +6,39 @@ export default function LearningExperience() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const items = [
-  { type: "image", img: "L1.png" },
-  {
-    type: "content",
-    tag: "LEARNING EXPERIENCE",
-    title: "Learn Through Activities & Examples",
-    desc: "Concepts come alive through hands-on activities and real-world examples.",
-    color: "bg-orange-500",
-  },
-  { type: "image", img: "L2.png" },
-  {
-    type: "content",
-    tag: "LEARNING EXPERIENCE",
-    title: "Creative & Interactive Learning",
-    desc: "Every lesson is engaging, interactive, and designed to make learning memorable.",
-    color: "bg-[#0f224a]",
-  },
-  {
-    type: "content",
-    tag: "LEARNING EXPERIENCE",
-    title: "Work on Projects & Assignments",
-    desc: "Students apply knowledge through guided projects that build real skills.",
-    color: "bg-gray-500",
-  },
-  { type: "image", img: "L3.png" },
-  {
-    type: "content",
-    tag: "LEARNING EXPERIENCE",
-    title: "Build Confidence in Expressing Ideas",
-    desc: "We help every student think clearly and speak their ideas with confidence.",
-    color: "bg-[#1e3a8a]",
-  },
-  { type: "image", img: "L4.png" },
-];
+    { type: "image", img: "L1.png" },
+    {
+      type: "content",
+      tag: "LEARNING EXPERIENCE",
+      title: "Learn Through Activities & Examples",
+      desc: "Concepts come alive through hands-on activities and real-world examples.",
+      color: "bg-orange-500",
+    },
+    { type: "image", img: "L2.png" },
+    {
+      type: "content",
+      tag: "LEARNING EXPERIENCE",
+      title: "Creative & Interactive Learning",
+      desc: "Every lesson is engaging, interactive, and designed to make learning memorable.",
+      color: "bg-[#0f224a]",
+    },
+    {
+      type: "content",
+      tag: "LEARNING EXPERIENCE",
+      title: "Work on Projects & Assignments",
+      desc: "Students apply knowledge through guided projects that build real skills.",
+      color: "bg-gray-500",
+    },
+    { type: "image", img: "L3.png" },
+    {
+      type: "content",
+      tag: "LEARNING EXPERIENCE",
+      title: "Build Confidence in Expressing Ideas",
+      desc: "We help every student think clearly and speak their ideas with confidence.",
+      color: "bg-[#1e3a8a]",
+    },
+    { type: "image", img: "L4.png" },
+  ];
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -67,10 +67,17 @@ export default function LearningExperience() {
   return (
     <>
       <style jsx>{`
-        @import url("https://fonts.googleapis.com/css2?family=Italiana&family=Lato:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600&display=swap");
-        
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&display=swap');
+
         * { font-family: "Lato", sans-serif; }
-        .hero-title { font-family: "Cormorant Garamond", serif; letter-spacing: 0.02em; }
+
+        .hero-title {
+          font-family: 'Barlow', sans-serif;
+          font-weight: 600;
+          font-style: normal;
+          letter-spacing: -0.01em;
+        }
 
         .le-from-top {
           opacity: 0;
@@ -127,19 +134,18 @@ export default function LearningExperience() {
           transform: translateY(0);
         }
 
-        /* Mobile: single column, fixed heights */
         .le-grid { display: grid; }
 
-        /* Mobile: 1 col, shorter rows */
+        /* Mobile: 1 col */
         @media (max-width: 639px) {
           .le-grid {
             grid-template-columns: 1fr;
           }
           .le-grid-item {
-            min-height: 240px;
+            min-height: 220px;
           }
           .le-grid-item.content-card {
-            min-height: 200px;
+            min-height: 190px;
           }
         }
 
@@ -153,7 +159,7 @@ export default function LearningExperience() {
           }
         }
 
-        /* Desktop: 4 col fixed row height */
+        /* Desktop: 4 col */
         @media (min-width: 1024px) {
           .le-grid {
             grid-template-columns: repeat(4, 1fr);
@@ -167,19 +173,19 @@ export default function LearningExperience() {
       `}</style>
 
       <section className="py-12 sm:py-16 lg:py-20 bg-white overflow-hidden" ref={sectionRef}>
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10">
 
           {/* Heading */}
           <div className="text-center mb-10 sm:mb-12 lg:mb-14">
             <p
-              className="le-heading-anim le-from-top text-orange-500 uppercase tracking-[4px]  text-xs sm:text-sm"
+              className="le-heading-anim le-from-top text-orange-500 uppercase tracking-[4px] text-xs sm:text-sm font-extrabold"
               data-delay="0"
             >
               LEARNING EXPERIENCE
             </p>
 
             <h2
-              className="le-heading-anim le-from-top hero-title text-[#0f224a] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-[500] mt-3 leading-tight"
+              className="le-heading-anim le-from-top hero-title text-[#0f224a] text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-3 leading-tight"
               data-delay="100"
             >
               Every course is designed to feel like
@@ -228,14 +234,14 @@ export default function LearningExperience() {
                 <div
                   key={i}
                   className={`le-grid-item content-card ${cardDir} ${item.color} text-white flex flex-col justify-center`}
-                  style={{ padding: "clamp(24px, 4vw, 40px)" }}
+                  style={{ padding: "clamp(20px, 4vw, 40px)" }}
                   data-delay={delay}
                 >
                   <div className="le-card-inner">
-                    <span className="le-tag block text-xs sm:text-sm tracking-[3px] uppercase text-white/70 mb-3">
+                    <span className="le-tag block text-xs sm:text-sm tracking-[3px] uppercase text-white/70 mb-2 sm:mb-3">
                       {item.tag}
                     </span>
-                    <h3 className="le-title hero-title text-2xl sm:text-3xl font-[500] leading-tight mb-3 sm:mb-5">
+                    <h3 className="le-title hero-title text-xl sm:text-2xl lg:text-3xl leading-tight mb-2 sm:mb-4">
                       {item.title}
                     </h3>
                     <p className="le-desc text-white/75 text-sm sm:text-base leading-6 sm:leading-7">

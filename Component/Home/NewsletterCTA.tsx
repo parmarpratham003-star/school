@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-export default function CTASection() {
+export default function NewsletterCTA() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -10,13 +10,18 @@ export default function CTASection() {
     if (!section) return;
 
     const els = section.querySelectorAll(".cta-anim");
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const el = entry.target as HTMLElement;
             const delay = el.dataset.delay || "0";
-            setTimeout(() => el.classList.add("cta-visible"), parseInt(delay));
+
+            setTimeout(() => {
+              el.classList.add("cta-visible");
+            }, parseInt(delay));
+
             observer.unobserve(el);
           }
         });
@@ -25,79 +30,108 @@ export default function CTASection() {
     );
 
     els.forEach((el) => observer.observe(el));
+
     return () => observer.disconnect();
   }, []);
 
   return (
     <>
       <style jsx>{`
-        @import url("https://fonts.googleapis.com/css2?family=Italiana&family=Lato:wght@300;400;500;600;700;800;900&display=swap");
-        * { font-family: "Lato", sans-serif; }
-        .hero-title { font-family: "Italiana", serif; letter-spacing: 0.05em; }
+        @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Lato:wght@300;400;500;600;700;800;900&display=swap");
 
-        /* FROM TOP */
+        * {
+          font-family: "Lato", sans-serif;
+        }
+
+        /* HERO FONT STYLE */
+        .hero-title {
+          font-family: "Barlow", sans-serif;
+          font-weight: 500;
+          letter-spacing: -0.03em;
+        }
+
         .cta-from-top {
           opacity: 0;
           transform: translateY(-38px);
-          transition: opacity 0.65s cubic-bezier(.22,1,.36,1),
-                      transform 0.65s cubic-bezier(.22,1,.36,1);
+          transition:
+            opacity 0.65s cubic-bezier(.22,1,.36,1),
+            transform 0.65s cubic-bezier(.22,1,.36,1);
         }
 
-        /* FROM RIGHT */
         .cta-from-right {
           opacity: 0;
           transform: translateX(48px);
-          transition: opacity 0.7s cubic-bezier(.22,1,.36,1),
-                      transform 0.7s cubic-bezier(.22,1,.36,1);
+          transition:
+            opacity 0.7s cubic-bezier(.22,1,.36,1),
+            transform 0.7s cubic-bezier(.22,1,.36,1);
         }
 
-        /* visible state */
         .cta-visible {
           opacity: 1 !important;
           transform: translate(0, 0) !important;
         }
 
         .cta-input {
-          height: 52px;
+          height: 50px;
           width: 100%;
-          background: rgba(255,255,255,0.1);
-          border: 1px solid rgba(255,255,255,0.3);
+          background: rgba(255,255,255,0.08);
+          border: 1px solid rgba(255,255,255,0.25);
           color: #fff;
-          padding: 0 20px;
-          border-radius: 2px;
+          padding: 0 18px;
           outline: none;
           font-size: 14px;
           transition: border-color 0.25s;
         }
-        .cta-input::placeholder { color: rgba(255,255,255,0.55); }
-        .cta-input:focus { border-color: #f97316; }
+
+        .cta-input::placeholder {
+          color: rgba(255,255,255,0.55);
+        }
+
+        .cta-input:focus {
+          border-color: #f97316;
+        }
 
         .cta-btn {
-          height: 52px;
+          height: 50px;
           background: #f97316;
           color: #fff;
           font-weight: 800;
           font-size: 13px;
           letter-spacing: 1px;
           border: none;
-          border-radius: 2px;
-          padding: 0 36px;
+          padding: 0 32px;
           cursor: pointer;
           white-space: nowrap;
           transition: background 0.25s, color 0.25s;
           width: 100%;
         }
-        .cta-btn:hover { background: #fff; color: #f97316; }
+
+        .cta-btn:hover {
+          background: #fff;
+          color: #f97316;
+        }
 
         @media (min-width: 640px) {
-          .cta-input { height: 56px; }
-          .cta-btn   { height: 56px; width: auto; }
+          .cta-input {
+            height: 54px;
+          }
+
+          .cta-btn {
+            height: 54px;
+            width: auto;
+          }
         }
       `}</style>
 
-      <section className="pt-2 pb-8 bg-white overflow-hidden" ref={sectionRef}>
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-md overflow-hidden min-h-[340px] sm:min-h-[380px] lg:min-h-[340px]">
+      <section
+        className="pt-10 pb-8 bg-white overflow-hidden"
+        ref={sectionRef}
+      >
+        {/* SAME HEADER PADDING */}
+        <div className="px-4 sm:px-6 lg:px-10">
+
+          {/* REDUCED HEIGHT */}
+          <div className="relative rounded-md overflow-hidden min-h-[250px] sm:min-h-[280px] lg:min-h-[260px]">
 
             {/* Background Image */}
             <img
@@ -109,69 +143,78 @@ export default function CTASection() {
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/65" />
 
-            {/* Content */}
-            <div className="relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center h-full px-6 sm:px-10 lg:px-14 py-10 sm:py-12">
+            {/* CONTENT */}
+           {/* REPLACE THIS CONTENT SECTION ONLY */}
 
-              {/* Left — all text from TOP */}
-              <div className="text-center lg:text-left">
+<div className="relative z-10 h-full px-6 sm:px-10 lg:px-14 py-7 sm:py-8 flex items-center">
 
-                <p
-                  className="cta-anim cta-from-top text-orange-500 uppercase tracking-[4px] font-extrabold text-xs sm:text-sm mb-3"
-                  data-delay="0"
-                >
-                  CALL TO ACTION
-                </p>
+  <div className="grid lg:grid-cols-[1.1fr_.9fr] gap-7 lg:gap-10 items-center w-full">
 
-                <h2
-                  className="cta-anim cta-from-top hero-title text-white text-2xl sm:text-3xl lg:text-[2.6rem] font-black leading-tight"
-                  data-delay="100"
-                >
-                  Stop waiting for the right time
-                  <br className="hidden sm:block" />
-                  Start building your skills today
-                </h2>
+    {/* LEFT CONTENT */}
+    <div className="max-w-[580px] pt-4 sm:pt-6 lg:pt-8 text-center lg:text-left mx-auto lg:mx-0">
 
-                <p
-                  className="cta-anim cta-from-top text-white/80 text-sm sm:text-base mt-4 leading-7 max-w-xl mx-auto lg:mx-0"
-                  data-delay="190"
-                >
-                  Your future career begins with one decision.
-                </p>
+      <p
+        className="cta-anim cta-from-top text-orange-500 uppercase tracking-[5px] font-extrabold text-[10px] sm:text-xs mb-3"
+        data-delay="0"
+      >
+        CALL TO ACTION
+      </p>
 
-              </div>
+      <h2
+        className="cta-anim cta-from-top hero-title text-white text-[28px] sm:text-[38px] lg:text-[46px] leading-[1.08]"
+        data-delay="100"
+      >
+        Stop waiting for the right time
+        <br />
+        Start building your skills today
+      </h2>
 
-              {/* Right — form elements from RIGHT */}
-              <div className="w-full">
+      <p
+        className="cta-anim cta-from-top text-white/80 text-xs sm:text-sm mt-4 leading-6"
+        data-delay="190"
+      >
+        Your future career begins with one decision.
+      </p>
 
-                <div
-                  className="cta-anim cta-from-right"
-                  data-delay="120"
-                >
-                  <form
-                    className="flex flex-col sm:flex-row gap-3"
-                    onSubmit={(e) => e.preventDefault()}
-                  >
-                    <input
-                      type="email"
-                      placeholder="Your email address"
-                      className="cta-input"
-                    />
-                    <button type="submit" className="cta-btn">
-                      Get Started
-                    </button>
-                  </form>
-                </div>
+    </div>
 
-                <p
-                  className="cta-anim cta-from-right text-white/60 text-xs sm:text-sm mt-3 text-center sm:text-left"
-                  data-delay="240"
-                >
-                  We respect your privacy. No spam ever.
-                </p>
+    {/* RIGHT FORM */}
+    <div className="w-full pt-2 sm:pt-4 lg:pt-6">
 
-              </div>
+      <div
+        className="cta-anim cta-from-right"
+        data-delay="120"
+      >
+        <form
+          className="flex flex-col sm:flex-row gap-3"
+          onSubmit={(e) => e.preventDefault()}
+        >
+          <input
+            type="email"
+            placeholder="Your email address"
+            className="cta-input"
+          />
 
-            </div>
+          <button
+            type="submit"
+            className="cta-btn"
+          >
+            Get Started
+          </button>
+        </form>
+      </div>
+
+      <p
+        className="cta-anim cta-from-right text-white/60 text-[11px] sm:text-xs mt-3 text-center sm:text-left"
+        data-delay="240"
+      >
+        We respect your privacy. No spam ever.
+      </p>
+
+    </div>
+
+  </div>
+</div>
           </div>
         </div>
       </section>

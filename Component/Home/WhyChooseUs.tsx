@@ -40,48 +40,98 @@ export default function WhyChooseUs() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Italiana&family=Lato:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500&display=swap');
+
+        * {
+          font-family: 'Lato', sans-serif;
+        }
 
         .hero-font {
-          font-family: 'Italiana', serif;
+          font-family: 'Barlow', sans-serif;
+          font-weight: 600 !important;
+          letter-spacing: -0.01em;
         }
 
         @keyframes fadeUp {
-          from { opacity:0; transform:translateY(30px); }
-          to { opacity:1; transform:translateY(0); }
+          from { opacity: 0; transform: translateY(30px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
 
         .fade-anim {
           animation: fadeUp .5s ease forwards;
         }
+
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
       `}</style>
 
       <section className="relative w-full bg-[#0f224a] py-14 sm:py-20 overflow-hidden">
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
 
-          {/* MOBILE MENU (scrollable) */}
-          <div className="lg:hidden flex gap-4 overflow-x-auto pb-6">
-            {data.map((item, idx) => (
-              <div
-                key={item.id}
-                onClick={() => setActive(idx)}
-                className={`min-w-[200px] p-3 rounded-md border transition ${
-                  active === idx
-                    ? "bg-orange-500 text-white"
-                    : "bg-white/10 text-white/70"
-                }`}
-              >
-                <p className="text-xs">{item.id}</p>
-                <p className="font-semibold">{item.label}</p>
-              </div>
-            ))}
+          {/* ── MOBILE: tag + scrollable chips ── */}
+          <div className="lg:hidden mb-6">
+            <p className="text-orange-500 text-[10px] sm:text-sm font-black tracking-[4px] uppercase mb-4">
+              Why Choose Us
+            </p>
+
+            <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2">
+              {data.map((item, idx) => (
+                <div
+                  key={item.id}
+                  onClick={() => setActive(idx)}
+                  className={`min-w-[160px] sm:min-w-[200px] p-3 sm:p-4 rounded-lg border cursor-pointer transition-all duration-300 ${
+                    active === idx
+                      ? "bg-orange-500 border-orange-500 text-white"
+                      : "bg-white/10 border-white/10 text-white/70"
+                  }`}
+                >
+                  <p className="text-xs font-bold mb-1">{item.id}</p>
+                  <p className="hero-font text-sm sm:text-base leading-snug" style={{fontWeight:600}}>{item.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="grid lg:grid-cols-12 gap-8 items-center">
+          {/* ── MOBILE: image + content stacked ── */}
+          <div className="lg:hidden">
+            {/* Image */}
+            <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-xl overflow-hidden shadow-2xl mb-6">
+              <img
+                key={active}
+                src={data[active].img}
+                alt={data[active].label}
+                className="w-full h-full object-cover transition-all duration-700 scale-105 hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0f224a]/80 via-transparent to-transparent" />
+            </div>
 
-            {/* LEFT MENU */}
-            <div className="hidden lg:flex lg:col-span-3 flex-col gap-6 border-l border-white/10 pl-6">
+            {/* Content */}
+            <div key={active} className="fade-anim relative z-10">
+              <h2 className="hero-font font-normal text-white text-2xl sm:text-3xl leading-[1.2] mb-4">
+                {data[active].title}
+              </h2>
+              <p className="text-slate-300 text-sm sm:text-base leading-7 mb-5">
+                {data[active].desc}
+              </p>
+              <button className="group flex flex-col items-start gap-1">
+                <span className="text-white text-xs sm:text-sm font-bold uppercase tracking-widest group-hover:text-orange-500 transition-colors">
+                  Learn More
+                </span>
+                <div className="h-[2px] w-12 bg-orange-500 group-hover:w-full transition-all duration-300" />
+              </button>
+            </div>
+          </div>
+
+          {/* ── DESKTOP: 3-col layout ── */}
+          <div className="hidden lg:grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+
+            {/* Left Menu */}
+            <div className="lg:col-span-3 flex flex-col gap-6 border-l border-white/10 pl-6">
               <p className="text-orange-500 text-sm font-black tracking-[4px] uppercase mb-6">
                 Why Choose Us
               </p>
@@ -91,47 +141,35 @@ export default function WhyChooseUs() {
                   key={item.id}
                   onMouseEnter={() => setActive(idx)}
                   className={`cursor-pointer flex items-center gap-4 transition-all duration-300 ${
-                    active === idx
-                      ? "translate-x-3"
-                      : "opacity-40 hover:opacity-100"
+                    active === idx ? "translate-x-3" : "opacity-40 hover:opacity-100"
                   }`}
                 >
-                  <span className={`text-lg font-bold ${
-                    active === idx ? "text-orange-500" : "text-white"
-                  }`}>
+                  <span className={`text-lg font-bold ${active === idx ? "text-orange-500" : "text-white"}`}>
                     {item.id}
                   </span>
-
-                  <span className={`hero-font text-lg ${
-                    active === idx ? "text-white" : "text-slate-300"
-                  }`}>
+                  <span className={`hero-font text-xl font-normal ${active === idx ? "text-white" : "text-slate-300"}`}>
                     {item.label}
                   </span>
-
-                  {active === idx && (
-                    <ChevronRight size={18} className="text-orange-500" />
-                  )}
+                  {active === idx && <ChevronRight size={18} className="text-orange-500" />}
                 </div>
               ))}
             </div>
 
-            {/* CENTER */}
+            {/* Center Content */}
             <div className="lg:col-span-5 relative">
-              <span className="absolute -top-24 -left-6 text-[140px] sm:text-[200px] font-black text-white/5 select-none">
+              <span className="absolute -top-24 -left-6 text-[200px] font-black text-white/5 select-none leading-none">
                 {data[active].id}
               </span>
 
-              <div key={active} className="fade-anim">
-                <h2 className="hero-font text-white text-2xl sm:text-4xl md:text-5xl font-bold leading-tight mb-5">
+              <div key={active} className="fade-anim relative z-10">
+                <h2 className="hero-font font-normal text-white text-4xl md:text-5xl leading-[1.15] mb-5">
                   {data[active].title}
                 </h2>
-
-                <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                <p className="text-slate-300 text-base leading-7 sm:leading-8 mb-6 max-w-xl">
                   {data[active].desc}
                 </p>
-
                 <button className="group flex flex-col items-start gap-1">
-                  <span className="text-white text-xs sm:text-sm font-bold uppercase tracking-widest group-hover:text-orange-500 transition-colors">
+                  <span className="text-white text-sm font-bold uppercase tracking-widest group-hover:text-orange-500 transition-colors">
                     Learn More
                   </span>
                   <div className="h-[2px] w-12 bg-orange-500 group-hover:w-full transition-all duration-300" />
@@ -139,15 +177,16 @@ export default function WhyChooseUs() {
               </div>
             </div>
 
-            {/* IMAGE */}
+            {/* Image */}
             <div className="lg:col-span-4">
-              <div className="relative w-full aspect-[3/4] sm:aspect-[4/5] rounded-xl overflow-hidden shadow-xl">
+              <div className="relative w-full aspect-[4/5] sm:aspect-[4/4.8] rounded-2xl overflow-hidden shadow-2xl">
                 <img
                   key={active}
                   src={data[active].img}
+                  alt={data[active].label}
                   className="w-full h-full object-cover transition-all duration-700 scale-105 hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0f224a]/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f224a]/80 via-transparent to-transparent" />
               </div>
             </div>
 

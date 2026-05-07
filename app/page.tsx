@@ -15,7 +15,7 @@ export default function Home() {
     <ProudNumbers/>
     <WhyChooseUs/>
     <LearningExperience/>
-    
+ 
     <NewsletterCTA/>
     <Footer />
     </>

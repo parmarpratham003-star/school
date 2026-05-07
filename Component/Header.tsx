@@ -12,23 +12,25 @@ export default function Header() {
     <>
       <header className="sticky top-0 z-[999] w-full bg-white/95 backdrop-blur-md border-b border-slate-200">
         <style>{`
-          @import url('https://fonts.googleapis.com/css2?family=Italiana&family=Lato:wght@300;400;500;600;700;800;900&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700;800;900&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@700;800;900&display=swap');
 
-          @font-face{
-            font-family:'Salina';
-            src:local('Salina');
+          *{
+            font-family:'Lato',sans-serif;
           }
 
+          /* SAME FONT AS HERO SECTION */
           .hero-font{
-            font-family:'Salina','Italiana',serif;
-            letter-spacing:.05em;
+            font-family:'Barlow',sans-serif !important;
+            font-weight:800 !important;
+            letter-spacing:-0.03em;
+            text-transform:uppercase;
           }
 
           .body-font{
             font-family:'Lato',sans-serif;
           }
 
-          /* SHINY ORANGE NAV EFFECT */
           .nav-shine{
             background-size:250% 100%;
             transition:all .3s ease;
@@ -59,13 +61,15 @@ export default function Header() {
 
         <div className="px-4 sm:px-6 lg:px-10">
           <div className="h-[65px] flex items-center justify-between gap-8">
+
             {/* Logo */}
             <a href="#" className="flex items-center gap-3 shrink-0 no-underline">
-              <div className="w-[42px] h-[42px] rounded-[3px] flex items-center justify-center bg-[#f97316]">
+              <div className="w-[44px] h-[44px] rounded-[4px] flex items-center justify-center bg-[#f97316]">
                 <GraduationCap className="text-white" size={22} />
               </div>
 
-              <span className="hero-font text-[22px] font-black tracking-tight text-[#0f1e45]">
+              {/* CHANGED FONT */}
+              <span className="hero-font text-[25px] leading-none text-[#0f1e45]">
                 EDUWAVE
               </span>
             </a>
