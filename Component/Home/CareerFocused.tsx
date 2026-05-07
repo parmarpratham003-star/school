@@ -52,7 +52,7 @@ export default function CareerFocused() {
             style={animStyle(true)}
           >
             <img
-              src="Career.png"
+              src="Career1.png"
               alt="Students collaborating"
               className="absolute inset-0 w-full h-full object-cover block hover:scale-[1.04] transition-transform duration-[8000ms] ease-linear"
             />
