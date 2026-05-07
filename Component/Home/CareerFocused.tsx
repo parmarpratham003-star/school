@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { MoveRight, GraduationCap, Target, Lightbulb } from "lucide-react";
+import { MoveRight, Briefcase, GraduationCap, Rocket, CheckCircle2 } from "lucide-react";
 
 export default function CareerFocused() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -9,169 +9,214 @@ export default function CareerFocused() {
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
-
-    const els = section.querySelectorAll(".cf-anim");
-
+    const els = section.querySelectorAll<HTMLElement>("[data-anim]");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const el = entry.target as HTMLElement;
-            const delay = el.dataset.delay || "0";
-
+            const delay = parseInt(el.dataset.delay || "0");
             setTimeout(() => {
-              el.classList.add("cf-visible");
-            }, parseInt(delay));
-
+              el.style.opacity = "1";
+              el.style.transform = "translateX(0)";
+            }, delay);
             observer.unobserve(el);
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.08 }
     );
-
     els.forEach((el) => observer.observe(el));
-
     return () => observer.disconnect();
   }, []);
 
+  const animStyle = (fromRight = false): React.CSSProperties => ({
+    opacity: 0,
+    transform: `translateX(${fromRight ? "40px" : "-40px"})`,
+    transition:
+      "opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)",
+  });
+
   return (
-    <section
-      className="w-full bg-[#0f224a] py-16 sm:py-24 overflow-hidden"
-      ref={sectionRef}
-    >
-      <style jsx global>{`
-        @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&display=swap");
-        @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&display=swap");
+    <section className="w-full bg-white py-12 sm:py-16 lg:py-20 overflow-hidden">
+      <div ref={sectionRef} className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10">
 
-        .hero-font {
-          font-family: "Barlow", sans-serif;
-          font-weight: 600;
-          letter-spacing: -0.02em;
-        }
+        {/* Split grid — CSS grid makes both columns equal height automatically */}
+        <div className="grid grid-cols-1 md:grid-cols-2 rounded-sm overflow-hidden">
 
-        .eyebrow-font {
-          font-family: "Barlow", sans-serif;
-          font-weight: 600;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-        }
-
-        .cf-anim {
-          opacity: 0;
-          transform: translateY(40px);
-          transition:
-            opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-            transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .cf-visible {
-          opacity: 1 !important;
-          transform: translateY(0) !important;
-        }
-      `}</style>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          
-          {/* LEFT COLUMN: THE VISUAL ANCHOR */}
-          <div className="lg:col-span-5 flex flex-col gap-8">
-            <div 
-              className="cf-anim relative h-[400px] lg:h-[600px] rounded-[40px] overflow-hidden group shadow-2xl"
-              data-delay="0"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&q=80"
-                alt="Student Success"
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0f224a]/80 via-transparent to-transparent" />
-              <div className="absolute bottom-8 left-8 right-8">
-                <p className="hero-font text-white text-2xl leading-tight">
-                  Empowering the next generation of leaders.
-                </p>
-              </div>
-            </div>
-            
-            {/* STAT/SUB-CARD */}
-            <div 
-              className="cf-anim hidden lg:flex bg-orange-500 rounded-[30px] p-8 items-center justify-between"
-              data-delay="400"
-            >
-              <div>
-                <h4 className="hero-font text-white text-4xl">100%</h4>
-                <p className="text-orange-100 text-sm font-medium">Student Commitment</p>
-              </div>
-              <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                <Target className="text-white" size={24} />
-              </div>
-            </div>
+          {/* LEFT — Image panel (stretches to full grid row height via CSS grid) */}
+          <div
+            className="relative overflow-hidden order-2 md:order-1 min-h-[260px] md:min-h-0"
+            data-anim
+            data-delay="0"
+            style={animStyle(true)}
+          >
+            <img
+              src="Career.png"
+              alt="Students collaborating"
+              className="absolute inset-0 w-full h-full object-cover block hover:scale-[1.04] transition-transform duration-[8000ms] ease-linear"
+            />
+           
           </div>
 
-          {/* RIGHT COLUMN: CONTENT & GRID */}
-          <div className="lg:col-span-7">
-            {/* HEADER */}
-            <div className="mb-12">
-              <p className="cf-anim eyebrow-font text-orange-500 text-sm mb-4" data-delay="100">
-                Mission & Value
-              </p>
-              <h2 className="cf-anim hero-font text-white text-4xl md:text-6xl leading-[1.1] mb-8" data-delay="200">
-                Preparing Students <br />
-                For Life Beyond <br />
-                The Classroom.
-              </h2>
-              <p className="cf-anim text-slate-400 text-lg md:text-xl leading-relaxed max-w-xl" data-delay="300">
-                We don't just focus on classroom teaching; we focus on growth, 
-                confidence, and a positive attitude toward lifelong learning.
-              </p>
-            </div>
+          {/* RIGHT — Content panel */}
+          <div
+            className="order-1 md:order-2 bg-white flex flex-col justify-center
+              px-5 py-8
+              sm:px-7 sm:py-9
+              lg:px-[52px] lg:py-[52px]"
+            style={{ fontFamily: "'Lato', sans-serif" }}
+          >
+            {/* Eyebrow */}
+            <p
+              className="text-orange-500 uppercase tracking-[4px] text-[10px] sm:text-xs font-extrabold mb-3"
+              data-anim
+              data-delay="100"
+              style={animStyle()}
+            >
+              CAREER FOCUSED LEARNING
+            </p>
 
-            {/* FEATURE GRID */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              
-              {/* CARD 1 */}
-              <div 
-                className="cf-anim bg-white/5 border border-white/10 p-8 rounded-[32px] hover:bg-white/10 transition-colors group"
+            {/* Main heading */}
+            <h2
+              className="text-[#0f224a] text-2xl sm:text-3xl lg:text-4xl leading-tight mb-4"
+              data-anim
+              data-delay="200"
+              style={{
+                ...animStyle(),
+                fontFamily: "'Barlow', sans-serif",
+                fontWeight: 700,
+                letterSpacing: "-0.01em",
+              }}
+            >
+              We don't just help you learn, we help you{" "}
+              <span className="text-orange-500">grow your career.</span>
+            </h2>
+
+            {/* Subtitle */}
+            <p
+              className="text-gray-500 text-sm sm:text-base leading-7 mb-6"
+              data-anim
+              data-delay="280"
+              style={animStyle()}
+            >
+              Whether your goal is getting a job, starting to learn, or building your own business —
+              we guide you with the right skills and direction.
+            </p>
+
+            {/* Goal label */}
+            <p
+              className="text-[10px] font-bold tracking-[0.18em] uppercase text-gray-300 mb-3"
+              data-anim
+              data-delay="340"
+              style={animStyle()}
+            >
+              Whether your goal is:
+            </p>
+
+            {/* Cards */}
+            <div className="flex flex-col gap-3 mb-6">
+
+              {/* Card 1 — Getting a Job */}
+              <div
+                className="group flex items-start gap-4 p-4 rounded-sm border border-gray-100 bg-white hover:bg-orange-50 hover:border-orange-100 transition-all duration-300 cursor-default"
+                data-anim
                 data-delay="400"
+                style={animStyle()}
               >
-                <div className="w-12 h-12 bg-orange-500 rounded-2xl flex items-center justify-center mb-6 text-white">
-                  <GraduationCap size={24} />
+                <div className="w-11 h-11 rounded-sm flex items-center justify-center flex-shrink-0 bg-orange-100 text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300">
+                  <Briefcase size={22} />
                 </div>
-                <h3 className="hero-font text-white text-2xl mb-3">Higher Education</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  A solid foundation designed for university transition and professional excellence.
-                </p>
+                <div className="flex-1 min-w-0">
+                  <div
+                    className="font-extrabold text-[15px] text-[#0f224a] leading-tight mb-1"
+                    style={{ fontFamily: "'Barlow', sans-serif" }}
+                  >
+                    Getting a Job
+                  </div>
+                  <div className="text-[13px] text-gray-400 leading-relaxed">
+                    Master the interview techniques and technical skills required to land your dream role in top-tier companies.
+                  </div>
+                  <div className="flex items-center gap-1 mt-2 text-[10px] font-bold tracking-[0.14em] uppercase text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Employability <MoveRight size={12} />
+                  </div>
+                </div>
               </div>
 
-              {/* CARD 2 */}
-              <div 
-                className="cf-anim bg-white/5 border border-white/10 p-8 rounded-[32px] hover:bg-white/10 transition-colors"
-                data-delay="500"
+              {/* Card 2 — Starting Learning */}
+              <div
+                className="group flex items-start gap-4 p-4 rounded-sm border border-gray-100 bg-white hover:bg-blue-50 hover:border-blue-100 transition-all duration-300 cursor-default"
+                data-anim
+                data-delay="460"
+                style={animStyle()}
               >
-                <div className="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center mb-6 text-white">
-                  <Lightbulb size={24} />
+                <div className="w-11 h-11 rounded-sm flex items-center justify-center flex-shrink-0 bg-blue-100 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">
+                  <GraduationCap size={22} />
                 </div>
-                <h3 className="hero-font text-white text-2xl mb-3">Career Paths</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  Strategic guidance to help students navigate and explore diverse professional avenues.
-                </p>
+                <div className="flex-1 min-w-0">
+                  <div
+                    className="font-extrabold text-[15px] text-[#0f224a] leading-tight mb-1"
+                    style={{ fontFamily: "'Barlow', sans-serif" }}
+                  >
+                    Starting Learning
+                  </div>
+                  <div className="text-[13px] text-gray-400 leading-relaxed">
+                    Build a world-class foundation with structured paths designed for deep mastery and academic excellence.
+                  </div>
+                  <div className="flex items-center gap-1 mt-2 text-[10px] font-bold tracking-[0.14em] uppercase text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Education <MoveRight size={12} />
+                  </div>
+                </div>
               </div>
 
-              {/* CARD 3 - WIDE */}
-              <div 
-                className="cf-anim md:col-span-2 bg-white rounded-[32px] p-8 md:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6 group cursor-pointer hover:shadow-2xl hover:shadow-orange-500/10 transition-all"
-                data-delay="600"
+              {/* Card 3 — Building Business */}
+              <div
+                className="group flex items-start gap-4 p-4 rounded-sm border border-gray-100 bg-white hover:bg-emerald-50 hover:border-emerald-100 transition-all duration-300 cursor-default"
+                data-anim
+                data-delay="520"
+                style={animStyle()}
               >
-                <div className="max-w-md">
-                  <h3 className="hero-font text-[#0f224a] text-2xl md:text-3xl mb-2">Personal Skills & Interests</h3>
-                  <p className="text-slate-500">Cultivating confidence and emotional intelligence in every student.</p>
+                <div className="w-11 h-11 rounded-sm flex items-center justify-center flex-shrink-0 bg-emerald-100 text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300">
+                  <Rocket size={22} />
                 </div>
-                <div className="w-14 h-14 rounded-full bg-[#0f224a] flex items-center justify-center text-white group-hover:bg-orange-500 transition-colors duration-500">
-                  <MoveRight size={24} />
+                <div className="flex-1 min-w-0">
+                  <div
+                    className="font-extrabold text-[15px] text-[#0f224a] leading-tight mb-1"
+                    style={{ fontFamily: "'Barlow', sans-serif" }}
+                  >
+                    Building Business
+                  </div>
+                  <div className="text-[13px] text-gray-400 leading-relaxed">
+                    Turning ideas into reality. Learn leadership, strategy, and operations to scale your own venture.
+                  </div>
+                  <div className="flex items-center gap-1 mt-2 text-[10px] font-bold tracking-[0.14em] uppercase text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Entrepreneurship <MoveRight size={12} />
+                  </div>
                 </div>
               </div>
 
             </div>
+
+            {/* CTA row */}
+            <div
+              className="flex items-center justify-between gap-3 pt-5 border-t border-[#f0eef8] flex-wrap"
+              data-anim
+              data-delay="580"
+              style={animStyle()}
+            >
+              <div className="flex flex-wrap gap-2">
+                {["Skill Assessment", "Strategic Coaching", "Industry Mentors"].map((label) => (
+                  <div key={label} className="flex items-center gap-1 text-[11px] text-[#9a9aaa] font-semibold">
+                    <CheckCircle2 size={13} className="text-orange-500 flex-shrink-0" />
+                    {label}
+                  </div>
+                ))}
+              </div>
+              <button className="bg-orange-500 hover:bg-[#0b162d] text-white px-[22px] py-3 rounded-sm text-[11px] font-bold tracking-[0.1em] uppercase cursor-pointer whitespace-nowrap inline-flex items-center gap-1.5 transition-colors duration-300 flex-shrink-0 border-0">
+                Start Journey <MoveRight size={14} />
+              </button>
+            </div>
+
           </div>
         </div>
       </div>

@@ -54,18 +54,18 @@ export default function Footer() {
 
   return (
     <footer className="w-full bg-[#0f1e45] text-white">
-      {/* ONLY FONT STYLE CHANGED */}
+      {/* HERO FONT STYLE */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Italiana&family=Lato:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Lato:wght@300;400;500;600;700;800;900&display=swap');
 
-        @font-face{
-          font-family:'Salina';
-          src:local('Salina');
+        *{
+          font-family:'Lato',sans-serif;
         }
 
         .hero-font{
-          font-family:'Salina','Italiana',serif;
-          letter-spacing:.05em;
+          font-family:'Barlow',sans-serif;
+          font-weight:500;
+          letter-spacing:-0.03em;
         }
 
         .body-font{
@@ -88,23 +88,23 @@ export default function Footer() {
         }
       `}</style>
 
-      {/* Top Section */}
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-14 body-font">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Logo */}
+      {/* TOP SECTION */}
+      <div className="px-4 sm:px-6 lg:px-10 py-12 sm:py-14 body-font">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+
+          {/* LOGO */}
           <div className="animate-[slideLeft_0.6s_cubic-bezier(0.22,1,0.36,1)_both]">
             <div className="flex items-center gap-3 mb-5">
               <div className="w-[42px] h-[42px] rounded-[3px] bg-[#f97316] flex items-center justify-center shadow-[0_4px_14px_rgba(249,115,22,0.35)]">
                 <GraduationCap size={22} className="text-white" />
               </div>
 
-              {/* SAME HERO FONT */}
-              <h2 className="hero-font text-[24px] font-bold tracking-tight">
+              <h2 className="hero-font text-[24px] sm:text-[26px]">
                 EDUWAVE
               </h2>
             </div>
 
-            <p className="text-slate-300 text-[15px] leading-7">
+            <p className="text-slate-300 text-[14px] sm:text-[15px] leading-7">
               Empowering students with quality education, discipline,
               and future-ready learning in a modern environment.
             </p>
@@ -117,19 +117,20 @@ export default function Footer() {
                   className="w-10 h-10 rounded-[3px] bg-white/10 flex items-center justify-center hover:bg-[#f97316] hover:shadow-[0_0_18px_rgba(249,115,22,0.5)] transition-all duration-300 relative overflow-hidden group"
                 >
                   <Icon />
+
                   <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-500 bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.25)_50%,transparent_100%)] skew-x-[-20deg]" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* QUICK LINKS */}
           <div className="animate-[slideLeft_0.6s_cubic-bezier(0.22,1,0.36,1)_100ms_both]">
-            <h3 className="hero-font text-[22px] font-bold mb-5">
+            <h3 className="hero-font text-[22px] mb-5">
               Quick Links
             </h3>
 
-            <ul className="space-y-3 text-slate-300">
+            <ul className="space-y-3 text-slate-300 text-[14px] sm:text-[15px]">
               {["Home", "About Us", "Courses", "Contact"].map((item, i) => (
                 <li key={i}>
                   <a
@@ -143,13 +144,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Programs */}
+          {/* PROGRAMS */}
           <div className="animate-[slideRight_0.6s_cubic-bezier(0.22,1,0.36,1)_100ms_both]">
-            <h3 className="hero-font text-[22px] font-bold mb-5">
+            <h3 className="hero-font text-[22px] mb-5">
               School Programs
             </h3>
 
-            <ul className="space-y-3 text-slate-300">
+            <ul className="space-y-3 text-slate-300 text-[14px] sm:text-[15px]">
               {[
                 "Primary Education",
                 "Secondary Classes",
@@ -169,13 +170,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* CONTACT */}
           <div className="animate-[slideRight_0.6s_cubic-bezier(0.22,1,0.36,1)_both]">
-            <h3 className="hero-font text-[22px] font-bold mb-5">
+            <h3 className="hero-font text-[22px] mb-5">
               Contact Info
             </h3>
 
-            <div className="space-y-4 text-slate-300 text-[15px]">
+            <div className="space-y-4 text-slate-300 text-[14px] sm:text-[15px]">
+
               <div className="flex items-start gap-3">
                 <MapPin size={18} className="text-[#f97316] mt-1 shrink-0" />
                 <p>Ahmedabad, Gujarat, India</p>
@@ -204,10 +206,10 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom */}
+      {/* BOTTOM */}
       <div className="border-t border-white/10 body-font">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 py-5 flex flex-col md:flex-row items-center justify-center gap-3">
-          <p className="text-slate-400 text-[14px]">
+        <div className="px-4 sm:px-6 lg:px-10 py-5 flex flex-col md:flex-row items-center justify-center gap-3">
+          <p className="text-slate-400 text-[13px] sm:text-[14px] text-center">
             © 2026 EDUWAVE. All Rights Reserved.
           </p>
         </div>

@@ -131,11 +131,11 @@ export default function NewsletterCTA() {
         <div className="px-4 sm:px-6 lg:px-10">
 
           {/* REDUCED HEIGHT */}
-          <div className="relative rounded-md overflow-hidden min-h-[250px] sm:min-h-[280px] lg:min-h-[260px]">
+          <div className="relative rounded-md overflow-hidden min-h-[250px] sm:min-h-[280px] lg:min-h-[350px]">
 
             {/* Background Image */}
             <img
-              src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1800&q=80"
+              src="CTA.png"
               alt="School Students"
               className="absolute inset-0 w-full h-full object-cover"
             />
@@ -151,7 +151,7 @@ export default function NewsletterCTA() {
   <div className="grid lg:grid-cols-[1.1fr_.9fr] gap-7 lg:gap-10 items-center w-full">
 
     {/* LEFT CONTENT */}
-    <div className="max-w-[580px] pt-4 sm:pt-6 lg:pt-8 text-center lg:text-left mx-auto lg:mx-0">
+    <div className="max-w-[580px] pt-4 sm:pt-6 lg:pt-15 text-center lg:text-left mx-auto lg:mx-0">
 
       <p
         className="cta-anim cta-from-top text-orange-500 uppercase tracking-[5px] font-extrabold text-[10px] sm:text-xs mb-3"
@@ -179,7 +179,7 @@ export default function NewsletterCTA() {
     </div>
 
     {/* RIGHT FORM */}
-    <div className="w-full pt-2 sm:pt-4 lg:pt-6">
+    <div className="w-full pt-2 sm:pt-4 lg:pt-15">
 
       <div
         className="cta-anim cta-from-right"

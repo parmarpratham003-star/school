@@ -9,28 +9,28 @@ const data = [
     label: "Concept Clarity",
     title: "Focus on understanding instead of memorization.",
     desc: "We ensure your child doesn't just memorize facts but understands the 'why' behind every concept, building a foundation that lasts a lifetime.",
-    img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80",
+    img: "https://i.pinimg.com/1200x/d9/cf/c7/d9cfc73c85e6358f6358fcb39301bd4a.jpg",
   },
   {
     id: "02",
     label: "Strong Foundation",
     title: "Build clear concepts in every single subject.",
     desc: "A well-structured curriculum designed to build clear concepts and strong fundamentals, ensuring academic excellence across the board.",
-    img: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&q=80",
+    img: "https://i.pinimg.com/736x/6b/c8/65/6bc865058c29420ac0963fd34dafddd0.jpg",
   },
   {
     id: "03",
     label: "Practical Learning",
     title: "Learn through real understanding and application.",
     desc: "Education isn't just about books. We integrate practical applications to make learning engaging, relevant, and fun for students.",
-    img: "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800&q=80",
+    img: "https://i.pinimg.com/736x/23/b2/3d/23b23df36f2fbc5b5b675642c88e5a22.jpg",
   },
   {
     id: "04",
     label: "Overall Growth",
     title: "Focus on values, confidence and development.",
     desc: "Beyond academics, we focus on character building, public speaking, and emotional intelligence to prepare children for the real world.",
-    img: "https://images.unsplash.com/photo-1524178232363-1fb28f74b573?w=800&q=80",
+    img: "https://i.pinimg.com/736x/a9/fb/eb/a9fbebd7a011b5f3c916b6bbbae027d3.jpg",
   },
 ];
 

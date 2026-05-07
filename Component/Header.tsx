@@ -1,12 +1,23 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { GraduationCap, ArrowUpRight, Menu, X } from "lucide-react";
 import { useState } from "react";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
-  const navItems = ["Home", "About", "Courses", "Contact"];
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Courses", path: "/courses" },
+    { name: "Contact", path: "/contact" },
+  ];
+
+  const isActive = (path: string) =>
+    path === "/" ? pathname === "/" : pathname.startsWith(path);
 
   return (
     <>
@@ -15,11 +26,8 @@ export default function Header() {
           @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700;800;900&display=swap');
           @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@700;800;900&display=swap');
 
-          *{
-            font-family:'Lato',sans-serif;
-          }
+          *{ font-family:'Lato',sans-serif; }
 
-          /* SAME FONT AS HERO SECTION */
           .hero-font{
             font-family:'Barlow',sans-serif !important;
             font-weight:800 !important;
@@ -27,9 +35,7 @@ export default function Header() {
             text-transform:uppercase;
           }
 
-          .body-font{
-            font-family:'Lato',sans-serif;
-          }
+          .body-font{ font-family:'Lato',sans-serif; }
 
           .nav-shine{
             background-size:250% 100%;
@@ -60,50 +66,38 @@ export default function Header() {
         `}</style>
 
         <div className="px-4 sm:px-6 lg:px-10">
-          <div className="h-[65px] flex items-center justify-between gap-8">
+          <div className="h-[70px] flex items-center justify-between gap-8">
 
             {/* Logo */}
-            <a href="#" className="flex items-center gap-3 shrink-0 no-underline">
+            <Link href="/" className="flex items-center gap-3 shrink-0 no-underline">
               <div className="w-[44px] h-[44px] rounded-[4px] flex items-center justify-center bg-[#f97316]">
                 <GraduationCap className="text-white" size={22} />
               </div>
-
-              {/* CHANGED FONT */}
               <span className="hero-font text-[25px] leading-none text-[#0f1e45]">
                 EDUWAVE
               </span>
-            </a>
+            </Link>
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-1 flex-1 justify-center body-font">
               {navItems.map((item, i) => (
-                <a
+                <Link
                   key={i}
-                  href="#"
-                  className={`nav-shine px-[22px] py-2 text-[13px] font-semibold tracking-[0.08em] uppercase no-underline ${
-                    i === 0
-                      ? "text-[#f97316]"
-                      : "text-slate-500"
+                  href={item.path}
+                  className={`nav-shine px-[22px] py-2 text-[15px] font-semibold tracking-[0.08em] uppercase no-underline ${
+                    isActive(item.path) ? "text-[#f97316]" : "text-slate-500"
                   }`}
                 >
-                  {item}
-                </a>
+                  {item.name}
+                </Link>
               ))}
             </nav>
 
             {/* CTA */}
             <button className="hidden lg:inline-flex group relative overflow-hidden items-center gap-2 px-5 py-3 rounded-[3px] text-[13px] font-bold uppercase tracking-[0.05em] bg-[#0f1e45] text-white border-2 border-[#0f1e45] hover:bg-white hover:text-[#f97316] hover:border-[#f97316] transition-all duration-300 body-font">
               <span>Find Courses</span>
-
-              <ArrowUpRight
-                size={16}
-                className="transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-0"
-              />
-
-              <ArrowUpRight
-                size={16}
-                className="absolute right-6 opacity-0 translate-x-[-6px] translate-y-[6px] transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"
-              />
+              <ArrowUpRight size={16} className="transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-0" />
+              <ArrowUpRight size={16} className="absolute right-6 opacity-0 translate-x-[-6px] translate-y-[6px] transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0" />
             </button>
 
             {/* Mobile Toggle */}
@@ -121,29 +115,21 @@ export default function Header() {
           <div className="lg:hidden border-t border-slate-100 bg-white px-4 sm:px-6 py-5 body-font">
             <div className="flex flex-col gap-2">
               {navItems.map((item, i) => (
-                <a
+                <Link
                   key={i}
-                  href="#"
+                  href={item.path}
                   className={`py-3 px-4 text-[13px] font-semibold uppercase tracking-wide no-underline border-b border-slate-100 ${
-                    i === 0 ? "text-[#f97316]" : "text-slate-500"
+                    isActive(item.path) ? "text-[#f97316]" : "text-slate-500"
                   }`}
                 >
-                  {item}
-                </a>
+                  {item.name}
+                </Link>
               ))}
 
               <button className="group mt-2 relative overflow-hidden flex items-center justify-center gap-2 py-3 rounded-[3px] text-[13px] font-bold uppercase tracking-wide bg-[#0f1e45] text-white border-2 border-[#0f1e45] hover:bg-white hover:text-[#f97316] hover:border-[#f97316] transition-all duration-300">
                 <span>Find Courses</span>
-
-                <ArrowUpRight
-                  size={15}
-                  className="transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-0"
-                />
-
-                <ArrowUpRight
-                  size={15}
-                  className="absolute right-6 opacity-0 translate-x-[-6px] translate-y-[6px] transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"
-                />
+                <ArrowUpRight size={15} className="transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-0" />
+                <ArrowUpRight size={15} className="absolute right-6 opacity-0 translate-x-[-6px] translate-y-[6px] transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0" />
               </button>
             </div>
           </div>
