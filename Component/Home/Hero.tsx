@@ -174,7 +174,7 @@ export default function Hero() {
           )}
 
           {/* Overlay */}
-          <div className="absolute inset-0 bg-black/55 z-20" />
+          <div className="absolute inset-0 bg-black/40 z-20" />
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/50 z-20" />
 
@@ -197,7 +197,7 @@ export default function Hero() {
 
                   {/* HEADING */}
                   <h1
-                    className="hero-title text-white text-xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.2] sm:leading-[1.1] mb-4 sm:mb-5"
+                    className="hero-title text-white text-xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.45] sm:leading-[1.32] tracking-[0.5px] mb-6 sm:mb-7"
                     style={{
                       animation:
                         "letterDrop .75s cubic-bezier(0.34,1.56,0.64,1) forwards",
@@ -210,7 +210,7 @@ export default function Hero() {
 
                   {/* DESCRIPTION */}
                   <p
-                    className="text-gray-200 text-sm sm:text-base md:text-lg font-medium leading-8 sm:leading-10 tracking-[0.3px] max-w-4xl mx-auto mb-6 sm:mb-8 px-2"
+                    className="text-gray-200 text-sm sm:text-base md:text-lg font-medium leading-7 sm:leading-8 tracking-[0.2px] max-w-3xl mx-auto mb-6 sm:mb-8 px-2"
                     style={{
                       animation:
                         "scaleReveal .7s ease .3s both",

@@ -61,18 +61,17 @@ export default function Proudnumbers() {
 
       {/* Heading */}
       <div className="px-4 sm:px-6 lg:px-10 text-center mb-8 sm:mb-10">
-        <p className="text-[#f97316] uppercase tracking-[3px] sm:tracking-[5px] font-bold text-[10px] sm:text-sm mb-2">
+        <p className="text-[#f97316] uppercase tracking-[3px] sm:tracking-[5px] font-bold text-[10px] sm:text-sm mb-5">
           Transformation Section
         </p>
 
-       <h2 className="hero-title text-[#0f1e45] text-2xl sm:text-4xl lg:text-[48px] leading-[1.1] mb-3">
-  Transforming Learning Into Real World Success
-</h2>
+       <h2 className="hero-title text-[#0f1e45] text-2xl sm:text-4xl lg:text-[48px] leading-[1.35] tracking-[-0.02em] mb-5">
+         Transforming Learning Into Real World Success
+       </h2>
 
-        <p className="text-gray-500 text-sm sm:text-base lg:text-lg leading-6 sm:leading-7 max-w-2xl sm:max-w-4xl mx-auto px-2">
+        <p className="text-gray-500 text-sm sm:text-base lg:text-lg leading-8 sm:leading-9 tracking-[0.2px] max-w-3xl mx-auto px-2">
           In today's competitive world certificates are not enough. What matters
-          is what you can actually do.
-          <br />
+          is what you can actually do.{" "}
           <span className="font-bold text-[#0f1e45]">
             Learn. Practice. Build. Succeed.
           </span>
@@ -152,15 +151,15 @@ export default function Proudnumbers() {
 
               {/* Hover Content */}
               <div className="absolute inset-0 flex flex-col justify-end px-8 pb-8 opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                <h3 className="hero-title text-white text-3xl mb-3">
+                <h3 className="hero-title text-white text-4xl mb-3">
                   {item.title}
                 </h3>
 
-                <p className="text-gray-300 text-lg leading-7 max-w-[260px] mb-5">
+                <p className="text-gray-300 text-1xl leading-7 max-w-[260px] mb-5">
                   {item.label}
                 </p>
 
-                <button className="border border-white text-white px-7 py-3 rounded-[4px] font-bold text-sm w-fit hover:bg-white hover:text-[#0f1e45] transition-all duration-300">
+                <button className="border border-white text-white px-7 py-3 rounded-[3px] font-bold text-sm w-fit hover:bg-white hover:text-[#0f1e45] transition-all duration-300">
                   Learn More
                 </button>
               </div>
@@ -173,11 +172,11 @@ export default function Proudnumbers() {
                     : "opacity-100 translate-y-0"
                 }`}
               >
-                <h3 className="hero-title text-white text-3xl">
+                <h3 className="hero-title text-white text-4xl">
                   {item.title}
                 </h3>
 
-                <p className="text-white text-lg mt-2">
+                <p className="text-white text-1xl mt-2">
                   {item.label}
                 </p>
               </div>

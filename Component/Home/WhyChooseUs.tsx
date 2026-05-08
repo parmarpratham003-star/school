@@ -86,8 +86,6 @@ export default function WhyChooseUs() {
               alt={data[active].label}
               className="w-full h-full object-cover transition-all duration-700"
             />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0f224a]/80 via-transparent to-transparent" />
           </div>
 
           {/* CONTENT */}
@@ -207,8 +205,6 @@ export default function WhyChooseUs() {
                 alt={data[active].label}
                 className="w-full h-full object-cover transition-all duration-700"
               />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0f224a]/70 via-transparent to-transparent" />
             </div>
           </div>
 
