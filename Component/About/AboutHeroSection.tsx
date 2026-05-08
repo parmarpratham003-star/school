@@ -28,8 +28,7 @@ export default function AboutHeroSection() {
     <section className="relative w-full overflow-hidden" ref={heroRef}>
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Barlow:wght@600;700&display=swap');
 
         * {
           font-family: 'Lato', sans-serif;
@@ -37,8 +36,7 @@ export default function AboutHeroSection() {
 
         .hero-title {
           font-family: 'Barlow', sans-serif;
-          font-weight: 800;
-          font-style: normal;
+          font-weight: 700;
           letter-spacing: -0.01em;
         }
       `}</style>
@@ -55,26 +53,15 @@ export default function AboutHeroSection() {
       </div>
 
       {/* CONTENT */}
-      <div className="relative z-10 px-4 sm:px-6 lg:px-12">
+      <div className="relative z-10 px-4 sm:px-6 lg:px-14">
         <div className="min-h-[720px] flex items-center -mt-24 sm:-mt-32">
           <div className="max-w-[720px] w-full">
 
-            {/* EYEBROW — same style as hero tag */}
-            <p
-              data-reveal
-              data-delay="100"
-              style={revealStyle()}
-              className="text-orange-500 uppercase tracking-[3px] sm:tracking-[4px] font-extrabold text-[10px] sm:text-sm mb-3 sm:mb-4"
-            >
-              ABOUT US
-            </p>
-
-            {/* HEADING — exact .hero-title class */}
             <h1
               data-reveal
               data-delay="260"
               style={revealStyle()}
-              className="hero-title text-white text-[30px] sm:text-[42px] lg:text-[50px] leading-[1.2] sm:leading-[1.1] mb-4 sm:mb-5"
+              className="hero-title text-white text-[30px] sm:text-[42px] lg:text-[50px] leading-[1.15] mb-4 sm:mb-5"
             >
               Inspiring Young Minds
               <br />
@@ -84,7 +71,6 @@ export default function AboutHeroSection() {
               &amp; Confidence
             </h1>
 
-            {/* DIVIDER */}
             <div
               data-reveal
               data-delay="380"
@@ -92,12 +78,11 @@ export default function AboutHeroSection() {
               className="mb-4 sm:mb-5 w-8 h-[2px] bg-orange-500"
             />
 
-            {/* DESCRIPTION — same gray-200 + sizing as hero desc */}
             <p
               data-reveal
               data-delay="500"
               style={revealStyle()}
-              className="text-gray-200 text-sm sm:text-base md:text-lg font-medium leading-6 sm:leading-8 max-w-xl"
+              className="text-gray-200 text-sm sm:text-base md:text-[17px] font-normal leading-7 sm:leading-8 max-w-xl"
             >
               We create an inspiring environment where children
               build knowledge, confidence, and creativity through

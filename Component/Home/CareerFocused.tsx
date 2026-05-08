@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { MoveRight, Briefcase, GraduationCap, Rocket, CheckCircle2 } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { MoveRight, Palette, BookOpen, Users, CheckCircle2, Play, X } from "lucide-react";
 
 export default function CareerFocused() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [videoOpen, setVideoOpen] = useState(false);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -18,7 +19,7 @@ export default function CareerFocused() {
             const delay = parseInt(el.dataset.delay || "0");
             setTimeout(() => {
               el.style.opacity = "1";
-              el.style.transform = "translateX(0)";
+              el.style.transform = "translateY(0) translateX(0)";
             }, delay);
             observer.unobserve(el);
           }
@@ -30,196 +31,215 @@ export default function CareerFocused() {
     return () => observer.disconnect();
   }, []);
 
-  const animStyle = (fromRight = false): React.CSSProperties => ({
+  const fadeLeft = (delay = 0): React.CSSProperties => ({
     opacity: 0,
-    transform: `translateX(${fromRight ? "40px" : "-40px"})`,
-    transition:
-      "opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)",
+    transform: "translateX(-60px)",
+    transition: `opacity 0.7s cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform 0.7s cubic-bezier(0.22,1,0.36,1) ${delay}ms`,
   });
 
+  const fadeRight = (delay = 0): React.CSSProperties => ({
+    opacity: 0,
+    transform: "translateX(60px)",
+    transition: `opacity 0.7s cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform 0.7s cubic-bezier(0.22,1,0.36,1) ${delay}ms`,
+  });
+
+  const fadeUp = (delay = 0): React.CSSProperties => ({
+    opacity: 0,
+    transform: "translateY(30px)",
+    transition: `opacity 0.7s cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform 0.7s cubic-bezier(0.22,1,0.36,1) ${delay}ms`,
+  });
+
+  const features = [
+    {
+      icon: <Palette size={22} />,
+      iconBg: "bg-orange-100",
+      iconColor: "text-orange-500",
+      title: "Creative Learning",
+      desc: "Students explore activities, projects, and interactive lessons that make learning enjoyable and meaningful.",
+      delay: 0,
+      border: "sm:border-r border-[#ede8e2]",
+      anim: fadeLeft,
+    },
+    {
+      icon: <BookOpen size={22} />,
+      iconBg: "bg-blue-100",
+      iconColor: "text-blue-500",
+      title: "Strong Academics",
+      desc: "We build strong foundations in every subject with practical understanding and guided learning.",
+      delay: 100,
+      border: "sm:border-r border-[#ede8e2] border-t sm:border-t-0 border-[#ede8e2]",
+      anim: fadeUp,
+    },
+    {
+      icon: <Users size={22} />,
+      iconBg: "bg-emerald-100",
+      iconColor: "text-emerald-500",
+      title: "Student Confidence",
+      desc: "Students develop communication, leadership, teamwork, and confidence for future success.",
+      delay: 200,
+      border: "border-t sm:border-t-0 border-[#ede8e2]",
+      anim: fadeRight,
+    },
+  ];
+
+  const VIDEO_ID = "vEso0_xaUMc";
+
   return (
-    <section className="w-full bg-white py-12 sm:py-16 lg:py-20 overflow-hidden">
-      <div ref={sectionRef} className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10">
+    <section
+      className="w-full bg-white py-16 sm:py-20 lg:py-24 overflow-hidden"
+      style={{ fontFamily: "'Lato', sans-serif" }}
+    >
+      {/* ── matches header padding exactly ── */}
+      <div ref={sectionRef} className="px-4 sm:px-6 lg:px-10">
 
-        {/* Split grid — CSS grid makes both columns equal height automatically */}
-        <div className="grid grid-cols-1 md:grid-cols-2 rounded-sm overflow-hidden">
+        {/* ── ROW 1: Heading LEFT | Desc + CTA RIGHT ── */}
+        <div className="grid lg:grid-cols-2 gap-10 items-center mb-12">
 
-          {/* LEFT — Image panel (stretches to full grid row height via CSS grid) */}
+          {/* LEFT — from left */}
+          <div data-anim data-delay="0" style={fadeLeft(0)}>
+            <p className="text-[#f97316] uppercase tracking-[4px] font-bold text-[10px] sm:text-xs mb-4">
+              Student Development
+            </p>
+            <h2
+              className="text-[#0f224a] text-4xl sm:text-5xl lg:text-[56px] leading-[1.05]"
+              style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 700, letterSpacing: "-0.02em" }}
+            >
+              We Help Every Child
+              <span className="text-[#f97316]"> Learn,
+                <br />Grow & Succeed!
+              </span>
+            </h2>
+          </div>
+
+          {/* RIGHT — from right */}
           <div
-            className="relative overflow-hidden order-2 md:order-1 min-h-[260px] md:min-h-0"
-            data-anim
-            data-delay="0"
-            style={animStyle(true)}
+            data-anim data-delay="150"
+            style={fadeRight(150)}
+            className="flex flex-col gap-6"
+          >
+            <p className="text-gray-500 text-[15px] sm:text-[17px] leading-[1.85]">
+              Our school focuses on academic excellence, creativity,
+              confidence building, and overall student development —
+              preparing every child for a bright and successful future.
+            </p>
+            <div className="flex items-center gap-4 flex-wrap">
+              <button className="group relative overflow-hidden bg-[#f97316] hover:bg-[#0f1e45] text-white px-7 py-3.5 rounded-[3px] text-[12px] font-bold uppercase tracking-[0.08em] inline-flex items-center gap-2 transition-colors duration-300 border-0 cursor-pointer">
+                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-500 bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.2)_50%,transparent_100%)] skew-x-[-20deg]" />
+                <span className="relative z-10 flex items-center gap-2">
+                  Learn More <MoveRight size={14} />
+                </span>
+              </button>
+              <div className="flex flex-wrap gap-3">
+                {["Creative", "Academic", "Confident"].map((tag) => (
+                  <span key={tag} className="flex items-center gap-1.5 text-[11px] text-gray-400 font-semibold">
+                    <CheckCircle2 size={13} className="text-orange-400" />{tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── ROW 2: 3 Feature Columns ── */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 mb-14 border border-[#ede8e2] rounded-[3px] overflow-hidden">
+          {features.map((feat) => (
+            <div
+              key={feat.title}
+              className={`group flex flex-col gap-4 p-7 sm:p-8 bg-white hover:bg-[#fdf9f6] transition-colors duration-300 cursor-default ${feat.border}`}
+              data-anim
+              data-delay={feat.delay}
+              style={feat.anim(feat.delay)}
+            >
+              <div className={`w-12 h-12 rounded-[3px] flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#f97316] group-hover:text-white ${feat.iconBg} ${feat.iconColor}`}>
+                {feat.icon}
+              </div>
+              <div>
+                <div
+                  className="text-[#0f224a] text-[17px] mb-2"
+                  style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 700 }}
+                >
+                  {feat.title}
+                </div>
+                <p className="text-gray-400 text-[13px] leading-relaxed">{feat.desc}</p>
+              </div>
+              <div className="flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest text-[#f97316] mt-auto">
+                Explore <MoveRight size={12} />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── ROW 3: Overlapping Image + Video ── */}
+        <div className="relative w-full h-[280px] sm:h-[380px] lg:h-[460px]">
+
+          {/* Image 1 — left, from left */}
+          <div
+            className="absolute left-0 top-0 w-[68%] h-full rounded-[3px] overflow-hidden shadow-xl"
+            data-anim data-delay="0"
+            style={fadeLeft(0)}
           >
             <img
               src="Career1.png"
-              alt="Students collaborating"
-              className="absolute inset-0 w-full h-full object-cover block hover:scale-[1.04] transition-transform duration-[8000ms] ease-linear"
+              alt="Students Learning"
+              className="w-full h-full object-cover"
             />
-           
           </div>
 
-          {/* RIGHT — Content panel */}
+          {/* Video card — right, from right */}
           <div
-            className="order-1 md:order-2 bg-white flex flex-col justify-center
-              px-5 py-8
-              sm:px-7 sm:py-9
-              lg:px-[52px] lg:py-[52px]"
-            style={{ fontFamily: "'Lato', sans-serif" }}
+            className="absolute right-0 top-[8%] w-[46%] h-[84%] rounded-[3px] overflow-hidden shadow-2xl cursor-pointer group"
+            data-anim data-delay="150"
+            style={fadeRight(150)}
+            onClick={() => setVideoOpen(true)}
           >
-            {/* Eyebrow */}
-            <p
-              className="text-orange-500 uppercase tracking-[4px] text-[10px] sm:text-xs font-extrabold mb-3"
-              data-anim
-              data-delay="100"
-              style={animStyle()}
-            >
-              CAREER FOCUSED LEARNING
-            </p>
-
-            {/* Main heading */}
-            <h2
-              className="text-[#0f224a] text-2xl sm:text-3xl lg:text-4xl leading-tight mb-4"
-              data-anim
-              data-delay="200"
-              style={{
-                ...animStyle(),
-                fontFamily: "'Barlow', sans-serif",
-                fontWeight: 700,
-                letterSpacing: "-0.01em",
-              }}
-            >
-              We don't just help you learn, we help you{" "}
-              <span className="text-orange-500">grow your career.</span>
-            </h2>
-
-            {/* Subtitle */}
-            <p
-              className="text-gray-500 text-sm sm:text-base leading-7 mb-6"
-              data-anim
-              data-delay="280"
-              style={animStyle()}
-            >
-              Whether your goal is getting a job, starting to learn, or building your own business —
-              we guide you with the right skills and direction.
-            </p>
-
-            {/* Goal label */}
-            <p
-              className="text-[10px] font-bold tracking-[0.18em] uppercase text-gray-300 mb-3"
-              data-anim
-              data-delay="340"
-              style={animStyle()}
-            >
-              Whether your goal is:
-            </p>
-
-            {/* Cards */}
-            <div className="flex flex-col gap-3 mb-6">
-
-              {/* Card 1 — Getting a Job */}
-              <div
-                className="group flex items-start gap-4 p-4 rounded-sm border border-gray-100 bg-white hover:bg-orange-50 hover:border-orange-100 transition-all duration-300 cursor-default"
-                data-anim
-                data-delay="400"
-                style={animStyle()}
-              >
-                <div className="w-11 h-11 rounded-sm flex items-center justify-center flex-shrink-0 bg-orange-100 text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300">
-                  <Briefcase size={22} />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div
-                    className="font-extrabold text-[15px] text-[#0f224a] leading-tight mb-1"
-                    style={{ fontFamily: "'Barlow', sans-serif" }}
-                  >
-                    Getting a Job
-                  </div>
-                  <div className="text-[13px] text-gray-400 leading-relaxed">
-                    Master the interview techniques and technical skills required to land your dream role in top-tier companies.
-                  </div>
-                  <div className="flex items-center gap-1 mt-2 text-[10px] font-bold tracking-[0.14em] uppercase text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    Employability <MoveRight size={12} />
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 2 — Starting Learning */}
-              <div
-                className="group flex items-start gap-4 p-4 rounded-sm border border-gray-100 bg-white hover:bg-blue-50 hover:border-blue-100 transition-all duration-300 cursor-default"
-                data-anim
-                data-delay="460"
-                style={animStyle()}
-              >
-                <div className="w-11 h-11 rounded-sm flex items-center justify-center flex-shrink-0 bg-blue-100 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">
-                  <GraduationCap size={22} />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div
-                    className="font-extrabold text-[15px] text-[#0f224a] leading-tight mb-1"
-                    style={{ fontFamily: "'Barlow', sans-serif" }}
-                  >
-                    Starting Learning
-                  </div>
-                  <div className="text-[13px] text-gray-400 leading-relaxed">
-                    Build a world-class foundation with structured paths designed for deep mastery and academic excellence.
-                  </div>
-                  <div className="flex items-center gap-1 mt-2 text-[10px] font-bold tracking-[0.14em] uppercase text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    Education <MoveRight size={12} />
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 3 — Building Business */}
-              <div
-                className="group flex items-start gap-4 p-4 rounded-sm border border-gray-100 bg-white hover:bg-emerald-50 hover:border-emerald-100 transition-all duration-300 cursor-default"
-                data-anim
-                data-delay="520"
-                style={animStyle()}
-              >
-                <div className="w-11 h-11 rounded-sm flex items-center justify-center flex-shrink-0 bg-emerald-100 text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300">
-                  <Rocket size={22} />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div
-                    className="font-extrabold text-[15px] text-[#0f224a] leading-tight mb-1"
-                    style={{ fontFamily: "'Barlow', sans-serif" }}
-                  >
-                    Building Business
-                  </div>
-                  <div className="text-[13px] text-gray-400 leading-relaxed">
-                    Turning ideas into reality. Learn leadership, strategy, and operations to scale your own venture.
-                  </div>
-                  <div className="flex items-center gap-1 mt-2 text-[10px] font-bold tracking-[0.14em] uppercase text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    Entrepreneurship <MoveRight size={12} />
-                  </div>
-                </div>
-              </div>
-
+            <img
+              src={`https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg`}
+              alt="Indian children playing in school"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-300" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-[#f97316] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <Play size={20} className="text-white ml-1" fill="white" />
             </div>
-
-            {/* CTA row */}
-            <div
-              className="flex items-center justify-between gap-3 pt-5 border-t border-[#f0eef8] flex-wrap"
-              data-anim
-              data-delay="580"
-              style={animStyle()}
-            >
-              <div className="flex flex-wrap gap-2">
-                {["Skill Assessment", "Strategic Coaching", "Industry Mentors"].map((label) => (
-                  <div key={label} className="flex items-center gap-1 text-[11px] text-[#9a9aaa] font-semibold">
-                    <CheckCircle2 size={13} className="text-orange-500 flex-shrink-0" />
-                    {label}
-                  </div>
-                ))}
-              </div>
-              <button className="bg-orange-500 hover:bg-[#0b162d] text-white px-[22px] py-3 rounded-sm text-[11px] font-bold tracking-[0.1em] uppercase cursor-pointer whitespace-nowrap inline-flex items-center gap-1.5 transition-colors duration-300 flex-shrink-0 border-0">
-                Start Journey <MoveRight size={14} />
-              </button>
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-5 py-4">
+              <p className="text-[10px] uppercase tracking-widest text-orange-400 font-bold mb-0.5">School Life</p>
+              <p
+                className="text-white text-[13px] font-bold"
+                style={{ fontFamily: "'Barlow', sans-serif" }}
+              >
+                Children Playing & Learning
+              </p>
             </div>
-
           </div>
         </div>
       </div>
+
+      {/* ── LIGHTBOX MODAL ── */}
+      {videoOpen && (
+        <div
+          className="fixed inset-0 z-[9999] bg-black/85 flex items-center justify-center p-4"
+          onClick={() => setVideoOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-4xl aspect-video rounded-[3px] overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <iframe
+              className="w-full h-full"
+              src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&controls=1&modestbranding=1&rel=0`}
+              title="Indian Children Playing in School Playground"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+            <button
+              onClick={() => setVideoOpen(false)}
+              className="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/70 hover:bg-black flex items-center justify-center transition-colors duration-200 border-0 cursor-pointer"
+            >
+              <X size={18} className="text-white" />
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

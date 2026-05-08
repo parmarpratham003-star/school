@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { GraduationCap, ArrowUpRight, Menu, X } from "lucide-react";
+import { GraduationCap, Menu, X } from "lucide-react";
 import { useState } from "react";
 
 export default function Header() {
@@ -73,7 +73,7 @@ export default function Header() {
               <div className="w-[44px] h-[44px] rounded-[4px] flex items-center justify-center bg-[#f97316]">
                 <GraduationCap className="text-white" size={22} />
               </div>
-              <span className="hero-font text-[25px] leading-none text-[#0f1e45]">
+              <span className="hero-font text-[22px] leading-none text-[#0f1e45]">
                 EDUWAVE
               </span>
             </Link>
@@ -84,7 +84,7 @@ export default function Header() {
                 <Link
                   key={i}
                   href={item.path}
-                  className={`nav-shine px-[22px] py-2 text-[15px] font-semibold tracking-[0.08em] uppercase no-underline ${
+                  className={`nav-shine px-[22px] py-2 text-[13px] font-semibold tracking-[0.08em] uppercase no-underline ${
                     isActive(item.path) ? "text-[#f97316]" : "text-slate-500"
                   }`}
                 >
@@ -93,11 +93,11 @@ export default function Header() {
               ))}
             </nav>
 
-            {/* CTA */}
-            <button className="hidden lg:inline-flex group relative overflow-hidden items-center gap-2 px-5 py-3 rounded-[3px] text-[13px] font-bold uppercase tracking-[0.05em] bg-[#0f1e45] text-white border-2 border-[#0f1e45] hover:bg-white hover:text-[#f97316] hover:border-[#f97316] transition-all duration-300 body-font">
-              <span>Find Courses</span>
-              <ArrowUpRight size={16} className="transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-0" />
-              <ArrowUpRight size={16} className="absolute right-6 opacity-0 translate-x-[-6px] translate-y-[6px] transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0" />
+            {/* CTA — desktop */}
+            <button className="hidden lg:inline-flex group relative overflow-hidden items-center gap-2 px-5 py-3 rounded-[3px] text-[12px] font-bold uppercase tracking-[0.05em] bg-[#0f1e45] text-white hover:bg-[#f97316] transition-colors duration-300 body-font">
+              {/* Shimmer stripe */}
+              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-500 bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.2)_50%,transparent_100%)] skew-x-[-20deg]" />
+              <span className="relative z-10">Find Courses</span>
             </button>
 
             {/* Mobile Toggle */}
@@ -126,10 +126,11 @@ export default function Header() {
                 </Link>
               ))}
 
-              <button className="group mt-2 relative overflow-hidden flex items-center justify-center gap-2 py-3 rounded-[3px] text-[13px] font-bold uppercase tracking-wide bg-[#0f1e45] text-white border-2 border-[#0f1e45] hover:bg-white hover:text-[#f97316] hover:border-[#f97316] transition-all duration-300">
-                <span>Find Courses</span>
-                <ArrowUpRight size={15} className="transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-0" />
-                <ArrowUpRight size={15} className="absolute right-6 opacity-0 translate-x-[-6px] translate-y-[6px] transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0" />
+              {/* CTA — mobile */}
+              <button className="group mt-2 relative overflow-hidden flex items-center justify-center gap-2 py-3 rounded-[3px] text-[13px] font-bold uppercase tracking-wide bg-[#0f1e45] text-white hover:bg-[#f97316] transition-colors duration-300">
+                {/* Shimmer stripe */}
+                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-500 bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.2)_50%,transparent_100%)] skew-x-[-20deg]" />
+                <span className="relative z-10">Find Courses</span>
               </button>
             </div>
           </div>

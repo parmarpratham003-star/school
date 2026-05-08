@@ -17,11 +17,9 @@ export default function NewsletterCTA() {
           if (entry.isIntersecting) {
             const el = entry.target as HTMLElement;
             const delay = el.dataset.delay || "0";
-
             setTimeout(() => {
               el.classList.add("cta-visible");
             }, parseInt(delay));
-
             observer.unobserve(el);
           }
         });
@@ -30,7 +28,6 @@ export default function NewsletterCTA() {
     );
 
     els.forEach((el) => observer.observe(el));
-
     return () => observer.disconnect();
   }, []);
 
@@ -39,11 +36,8 @@ export default function NewsletterCTA() {
       <style jsx>{`
         @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Lato:wght@300;400;500;600;700;800;900&display=swap");
 
-        * {
-          font-family: "Lato", sans-serif;
-        }
+        * { font-family: "Lato", sans-serif; }
 
-        /* HERO FONT STYLE */
         .hero-title {
           font-family: "Barlow", sans-serif;
           font-weight: 500;
@@ -83,138 +77,90 @@ export default function NewsletterCTA() {
           transition: border-color 0.25s;
         }
 
-        .cta-input::placeholder {
-          color: rgba(255,255,255,0.55);
-        }
-
-        .cta-input:focus {
-          border-color: #f97316;
-        }
-
-        .cta-btn {
-          height: 50px;
-          background: #f97316;
-          color: #fff;
-          font-weight: 800;
-          font-size: 13px;
-          letter-spacing: 1px;
-          border: none;
-          padding: 0 32px;
-          cursor: pointer;
-          white-space: nowrap;
-          transition: background 0.25s, color 0.25s;
-          width: 100%;
-        }
-
-        .cta-btn:hover {
-          background: #fff;
-          color: #f97316;
-        }
+        .cta-input::placeholder { color: rgba(255,255,255,0.55); }
+        .cta-input:focus { border-color: #f97316; }
 
         @media (min-width: 640px) {
-          .cta-input {
-            height: 54px;
-          }
-
-          .cta-btn {
-            height: 54px;
-            width: auto;
-          }
+          .cta-input { height: 54px; }
         }
       `}</style>
 
-      <section
-        className="pt-10 pb-8 bg-white overflow-hidden"
-        ref={sectionRef}
-      >
-        {/* SAME HEADER PADDING */}
+      <section className=" pb-8 bg-white overflow-hidden" ref={sectionRef}>
         <div className="px-4 sm:px-6 lg:px-10">
-
-          {/* REDUCED HEIGHT */}
           <div className="relative rounded-md overflow-hidden min-h-[250px] sm:min-h-[280px] lg:min-h-[350px]">
 
-            {/* Background Image */}
             <img
-              src="CTA.png"
+              src="https://i.pinimg.com/1200x/de/5c/be/de5cbecb32cddb8b53c145b287b1648d.jpg"
               alt="School Students"
               className="absolute inset-0 w-full h-full object-cover"
             />
-
-            {/* Overlay */}
             <div className="absolute inset-0 bg-black/65" />
 
-            {/* CONTENT */}
-           {/* REPLACE THIS CONTENT SECTION ONLY */}
+            <div className="relative z-10 h-full px-6 sm:px-10 lg:px-14 py-7 sm:py-8 flex items-center">
+              <div className="grid lg:grid-cols-[1.1fr_.9fr] gap-7 lg:gap-10 items-center w-full">
 
-<div className="relative z-10 h-full px-6 sm:px-10 lg:px-14 py-7 sm:py-8 flex items-center">
+                {/* LEFT */}
+    {/* LEFT */}
+<div className="max-w-[580px] pt-4 sm:pt-6 lg:pt-15 text-center lg:text-left mx-auto lg:mx-0">
+  <p
+    className="cta-anim cta-from-top text-orange-500 uppercase tracking-[5px] font-extrabold text-[10px] sm:text-xs mb-3"
+    data-delay="0"
+  >
+    ENROLL NOW
+  </p>
 
-  <div className="grid lg:grid-cols-[1.1fr_.9fr] gap-7 lg:gap-10 items-center w-full">
+  <h2
+    className="cta-anim cta-from-top hero-title text-white text-[28px] sm:text-[38px] lg:text-[46px] leading-[1.08]"
+    data-delay="100"
+  >
+    Start Your Child’s
+    <br />
+    Learning Journey Today
+  </h2>
 
-    {/* LEFT CONTENT */}
-    <div className="max-w-[580px] pt-4 sm:pt-6 lg:pt-15 text-center lg:text-left mx-auto lg:mx-0">
-
-      <p
-        className="cta-anim cta-from-top text-orange-500 uppercase tracking-[5px] font-extrabold text-[10px] sm:text-xs mb-3"
-        data-delay="0"
-      >
-        CALL TO ACTION
-      </p>
-
-      <h2
-        className="cta-anim cta-from-top hero-title text-white text-[28px] sm:text-[38px] lg:text-[46px] leading-[1.08]"
-        data-delay="100"
-      >
-        Stop waiting for the right time
-        <br />
-        Start building your skills today
-      </h2>
-
-      <p
-        className="cta-anim cta-from-top text-white/80 text-xs sm:text-sm mt-4 leading-6"
-        data-delay="190"
-      >
-        Your future career begins with one decision.
-      </p>
-
-    </div>
-
-    {/* RIGHT FORM */}
-    <div className="w-full pt-2 sm:pt-4 lg:pt-15">
-
-      <div
-        className="cta-anim cta-from-right"
-        data-delay="120"
-      >
-        <form
-          className="flex flex-col sm:flex-row gap-3"
-          onSubmit={(e) => e.preventDefault()}
-        >
-          <input
-            type="email"
-            placeholder="Your email address"
-            className="cta-input"
-          />
-
-          <button
-            type="submit"
-            className="cta-btn"
-          >
-            Get Started
-          </button>
-        </form>
-      </div>
-
-      <p
-        className="cta-anim cta-from-right text-white/60 text-[11px] sm:text-xs mt-3 text-center sm:text-left"
-        data-delay="240"
-      >
-        We respect your privacy. No spam ever.
-      </p>
-
-    </div>
-
-  </div>
+  <p
+    className="cta-anim cta-from-top text-white/80 text-xs sm:text-sm mt-4 leading-6"
+    data-delay="190"
+  >
+    Join a school where students learn with confidence,
+    creativity, and real world experiences.
+  </p>
 </div>
+
+                {/* RIGHT */}
+                <div className="w-full pt-2 sm:pt-4 lg:pt-15">
+                  <div className="cta-anim cta-from-right" data-delay="120">
+                    <form
+                      className="flex flex-col sm:flex-row gap-3"
+                      onSubmit={(e) => e.preventDefault()}
+                    >
+                      <input
+                        type="email"
+                        placeholder="Your email address"
+                        className="cta-input"
+                      />
+
+                      {/* Button — fully Tailwind */}
+                      <button
+                        type="submit"
+                        className="group relative overflow-hidden h-[50px] sm:h-[54px] w-full sm:w-auto px-8 bg-orange-500 hover:bg-white text-white hover:text-orange-500 text-[13px] font-extrabold tracking-[1px] uppercase border-0 cursor-pointer whitespace-nowrap flex items-center justify-center transition-colors duration-300"
+                      >
+                        <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-500 bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.25)_50%,transparent_100%)] skew-x-[-20deg]" />
+                        <span className="relative z-10">Get Started</span>
+                      </button>
+                    </form>
+                  </div>
+
+                  <p
+                    className="cta-anim cta-from-right text-white/60 text-[11px] sm:text-xs mt-3 text-center sm:text-left"
+                    data-delay="240"
+                  >
+                    We respect your privacy. No spam ever.
+                  </p>
+                </div>
+
+              </div>
+            </div>
           </div>
         </div>
       </section>

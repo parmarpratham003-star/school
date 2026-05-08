@@ -17,12 +17,12 @@ export default function Proudnumbers() {
     {
       title: "Build",
       label: "Create your portfolio and showcase experience.",
-      img: "W3.png",
+      img: "W4.png",
     },
     {
       title: "Succeed",
       label: "Become career ready and achieve your goals.",
-      img: "W4.png",
+      img: "W3.png",
     },
   ];
 
@@ -65,11 +65,9 @@ export default function Proudnumbers() {
           Transformation Section
         </p>
 
-        <h2 className="hero-title text-[#0f1e45] text-2xl sm:text-4xl lg:text-[48px] leading-[1.2] mb-3">
-          We Don't Believe In Just Teaching
-          <br className="hidden sm:block" />
-          We Believe In Transforming
-        </h2>
+       <h2 className="hero-title text-[#0f1e45] text-2xl sm:text-4xl lg:text-[48px] leading-[1.1] mb-3">
+  Transforming Learning Into Real World Success
+</h2>
 
         <p className="text-gray-500 text-sm sm:text-base lg:text-lg leading-6 sm:leading-7 max-w-2xl sm:max-w-4xl mx-auto px-2">
           In today's competitive world certificates are not enough. What matters
@@ -96,7 +94,7 @@ export default function Proudnumbers() {
             <div className="absolute inset-0 bg-black/40" />
 
             <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-5">
-              <h3 className="hero-title text-white text-2xl sm:text-3xl mb-1">
+              <h3 className="hero-title text-white text-2xl sm:text-2xl mb-1">
                 {item.title}
               </h3>
 
@@ -115,7 +113,7 @@ export default function Proudnumbers() {
       {/* ================= DESKTOP VIEW ================= */}
       {/* SAME LEFT RIGHT PADDING AS HEADER */}
       <div className="hidden lg:block px-10">
-        <div className="relative w-full h-[650px] overflow-hidden rounded-2xl">
+        <div className="relative w-full h-[600px] overflow-hidden rounded-[3px]">
 
           {/* Background */}
           <div
@@ -154,7 +152,7 @@ export default function Proudnumbers() {
 
               {/* Hover Content */}
               <div className="absolute inset-0 flex flex-col justify-end px-8 pb-8 opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                <h3 className="hero-title text-white text-5xl mb-3">
+                <h3 className="hero-title text-white text-3xl mb-3">
                   {item.title}
                 </h3>
 
@@ -175,7 +173,7 @@ export default function Proudnumbers() {
                     : "opacity-100 translate-y-0"
                 }`}
               >
-                <h3 className="hero-title text-white text-4xl">
+                <h3 className="hero-title text-white text-3xl">
                   {item.title}
                 </h3>
 

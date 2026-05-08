@@ -5,40 +5,47 @@ import { useEffect, useRef } from "react";
 export default function LearningExperience() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  const items = [
-    { type: "image", img: "L1.png" },
-    {
-      type: "content",
-      tag: "LEARNING EXPERIENCE",
-      title: "Learn Through Activities & Examples",
-      desc: "Concepts come alive through hands-on activities and real-world examples.",
-      color: "bg-orange-500",
-    },
-    { type: "image", img: "L2.png" },
-    {
-      type: "content",
-      tag: "LEARNING EXPERIENCE",
-      title: "Creative & Interactive Learning",
-      desc: "Every lesson is engaging, interactive, and designed to make learning memorable.",
-      color: "bg-[#0f224a]",
-    },
-    {
-      type: "content",
-      tag: "LEARNING EXPERIENCE",
-      title: "Work on Projects & Assignments",
-      desc: "Students apply knowledge through guided projects that build real skills.",
-      color: "bg-gray-500",
-    },
-    { type: "image", img: "L3.png" },
-    {
-      type: "content",
-      tag: "LEARNING EXPERIENCE",
-      title: "Build Confidence in Expressing Ideas",
-      desc: "We help every student think clearly and speak their ideas with confidence.",
-      color: "bg-[#1e3a8a]",
-    },
-    { type: "image", img: "L4.png" },
-  ];
+ const items = [
+  { type: "image", img: "L1.png" },
+
+  {
+    type: "content",
+    tag: "LEARNING EXPERIENCE",
+    title: "Learn Through \nActivities",
+   desc: "Concepts come alive through activities\nand practical examples.",
+    color: "bg-orange-500",
+  },
+
+  { type: "image", img: "L2.png" },
+
+  {
+    type: "content",
+    tag: "LEARNING EXPERIENCE",
+    title: "Creative & \nLearning",
+    desc: "Interactive lessons make learning\nsimple and memorable.",
+    color: "bg-[#0f224a]",
+  },
+
+  {
+    type: "content",
+    tag: "LEARNING EXPERIENCE",
+   title: "Projects &\nAssignments",
+  desc: "Students learn teamwork through\nprojects and assignments.",
+    color: "bg-gray-500",
+  },
+
+  { type: "image", img: "L3.png" },
+
+  {
+    type: "content",
+    tag: "LEARNING EXPERIENCE",
+  title: "Build Student\nConfidence",
+   desc: "We help students express ideas\nwith clarity and confidence.",
+    color: "bg-[#1e3a8a]",
+  },
+
+  { type: "image", img: "L4.png" },
+];
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -184,14 +191,12 @@ export default function LearningExperience() {
               LEARNING EXPERIENCE
             </p>
 
-            <h2
-              className="le-heading-anim le-from-top hero-title text-[#0f224a] text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-3 leading-tight"
-              data-delay="100"
-            >
-              Every course is designed to feel like
-              <br className="hidden sm:block" />
-              real work not classroom theory
-            </h2>
+           <h2
+  className="le-heading-anim le-from-top hero-title text-[#0f224a] text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-3 leading-tight"
+  data-delay="100"
+>
+  Every Course Is Designed For Real World Learning
+</h2>
 
             <p
               className="le-heading-anim le-from-bottom text-gray-500 text-base sm:text-lg mt-4 sm:mt-6 max-w-3xl mx-auto leading-7 sm:leading-8"
