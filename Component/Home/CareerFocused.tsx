@@ -86,7 +86,7 @@ export default function CareerFocused() {
 
   return (
     <section
-      className="w-full bg-white py-16 sm:py-20 lg:py-24 overflow-hidden"
+      className="w-full bg-white py-16 sm:py-20 lg:py-8 overflow-hidden"
       style={{ fontFamily: "'Lato', sans-serif" }}
     >
       {/* ── matches header padding exactly ── */}
