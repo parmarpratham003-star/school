@@ -179,7 +179,7 @@ export default function LearningExperience() {
         }
       `}</style>
 
-      <section className="py-12 sm:py-16 lg:py-20 bg-white overflow-hidden" ref={sectionRef}>
+      <section className="py-12 sm:py-16 lg:py-8 bg-white overflow-hidden" ref={sectionRef}>
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10">
 
           {/* Heading */}

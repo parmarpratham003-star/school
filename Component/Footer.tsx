@@ -64,8 +64,8 @@ export default function Footer() {
 
         .hero-font{
           font-family:'Barlow',sans-serif;
-          font-weight:500;
-          letter-spacing:-0.03em;
+          font-weight:300;
+          letter-spacing:-0.02em;
         }
 
         .body-font{

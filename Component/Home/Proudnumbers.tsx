@@ -12,17 +12,17 @@ export default function Proudnumbers() {
     {
       title: "Practice",
       label: "Work on real projects and improve confidence.",
-      img: "W2.png",
+      img: "W3.png",
     },
     {
       title: "Build",
       label: "Create your portfolio and showcase experience.",
-      img: "W4.png",
+      img: "W2.png",
     },
     {
       title: "Succeed",
       label: "Become career ready and achieve your goals.",
-      img: "W3.png",
+      img: "W4.png",
     },
   ];
 

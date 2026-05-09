@@ -1,140 +1,349 @@
 "use client";
 
-import React from "react";
-import {
-  Award,
-  Users,
-  GraduationCap,
-  BookOpen,
-} from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
 
-export default function OurJourneySection() {
-  const journeyData = [
-    {
-      number: "10+",
-      title: "Years Of Excellence",
-      icon: <Award size={22} />,
-    },
-    {
-      number: "50+",
-      title: "Dedicated Educators",
-      icon: <Users size={22} />,
-    },
-    {
-      number: "5K+",
-      title: "Successful Students",
-      icon: <GraduationCap size={22} />,
-    },
-    {
-      number: "100%",
-      title: "Modern Learning",
-      icon: <BookOpen size={22} />,
-    },
-  ];
+/* COUNTER */
+function useCounter(
+  target: number,
+  duration = 1600,
+  start = false
+) {
+  const [value, setValue] = useState(0);
 
+  useEffect(() => {
+    if (!start) return;
+
+    let raf: number;
+
+    const startTime = performance.now();
+
+    const update = (currentTime: number) => {
+      const progress = Math.min(
+        (currentTime - startTime) / duration,
+        1
+      );
+
+      const eased =
+        1 - Math.pow(1 - progress, 3);
+
+      setValue(Math.round(eased * target));
+
+      if (progress < 1) {
+        raf = requestAnimationFrame(update);
+      }
+    };
+
+    raf = requestAnimationFrame(update);
+
+    return () => cancelAnimationFrame(raf);
+  }, [target, duration, start]);
+
+  return value;
+}
+
+/* WORD ANIMATION */
+function AnimatedWords({
+  text,
+  baseDelay = 0,
+}: {
+  text: string;
+  baseDelay?: number;
+}) {
   return (
-    <section className="relative w-full bg-white py-16 sm:py-20 overflow-hidden">
-
-      {/* BACKGROUND */}
-      <div className="absolute top-0 left-0 w-[320px] h-[320px] bg-orange-50 rounded-full blur-3xl opacity-70" />
-
-      <div className="absolute bottom-0 right-0 w-[260px] h-[260px] bg-blue-50 rounded-full blur-3xl opacity-70" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
-
-        {/* TOP */}
-        <div className="max-w-3xl mx-auto text-center mb-20">
-
-          <p className="text-orange-500 uppercase tracking-[4px] text-[10px] sm:text-xs font-bold mb-4">
-            OUR JOURNEY
-          </p>
-
-          <h2
-            className="text-[#0f224a] text-3xl sm:text-4xl lg:text-[52px] leading-[1.08] tracking-[-0.02em] font-medium mb-5"
+    <>
+      {text.split(" ").map((word, i) => (
+        <span
+          key={i}
+          className="mr-[0.25em] inline-block overflow-hidden"
+        >
+          <span
+            className="inline-block animate-[wordRise_.65s_cubic-bezier(0.22,1,0.36,1)_both]"
             style={{
-              fontFamily: "'Barlow', sans-serif",
+              animationDelay: `${baseDelay + i * 90}ms`,
             }}
           >
-            Building Futures
-            <span className="text-orange-500">
-              {" "}
-              Through Education
-            </span>
-          </h2>
+            {word}
+          </span>
+        </span>
+      ))}
+    </>
+  );
+}
 
-          <p className="text-gray-500 text-sm sm:text-base leading-8">
-            Years of excellence, passionate educators,
-            successful students, and innovative learning
-            experiences continue to shape our journey.
-          </p>
+export default function Journey() {
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+        }
+      },
+      { threshold: 0.12 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const count1 = useCounter(10, 1600, visible);
+  const count2 = useCounter(50, 1900, visible);
+
+  return (
+    <>
+      <style jsx>{`
+        @keyframes wordRise {
+          from {
+            transform: translateY(110%);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+
+        @keyframes fadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(24px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+
+      <section
+        ref={ref}
+        className="relative overflow-hidden bg-white py-10 sm:py-12 lg:py-8"
+        style={{
+          fontFamily: "'Barlow', sans-serif",
+        }}
+      >
+        {/* DOT BACKGROUND */}
+        <div className="absolute inset-0 opacity-[0.04]">
+          <div
+            className="h-full w-full"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle, #0f224a 1px, transparent 1px)",
+              backgroundSize: "22px 22px",
+            }}
+          />
         </div>
 
-        {/* UNIQUE SCHOOL STYLE */}
-        <div className="relative">
+        {/* CONTAINER */}
+        <div className="relative z-10 w-full px-4 sm:px-6 lg:px-10">
 
-          {/* CENTER LINE */}
-          <div className="hidden lg:block absolute top-1/2 left-0 w-full h-[1px] bg-[#e8edf5]" />
+          <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-16 gap-x-10 relative z-10">
+            {/* LEFT */}
+            <div className="flex flex-col gap-6">
 
-            {journeyData.map((item, index) => (
+              {/* IMAGE */}
               <div
-                key={index}
-                className={`relative flex flex-col items-center text-center ${
-                  index % 2 === 0
-                    ? "lg:-mt-10"
-                    : "lg:mt-10"
+                className={`group pl-4 pt-4 sm:pl-6 sm:pt-6 ${
+                  visible
+                    ? "animate-[fadeUp_.7s_cubic-bezier(0.22,1,0.36,1)_both]"
+                    : "opacity-0"
+                }`}
+              >
+                <div className="relative overflow-visible">
+
+                  {/* FRAME */}
+                  <div className="absolute -left-4 -top-4 h-full w-full rounded-[4px] border-2 border-[#d9dee8] sm:-left-6 sm:-top-6" />
+
+                  {/* IMAGE */}
+                  <div className="relative z-10 h-[220px] overflow-hidden rounded-[4px] bg-[#f6f6f6] sm:h-[320px] lg:h-[400px]">
+
+                    <img
+                      src="https://i.pinimg.com/736x/3f/21/bf/3f21bf730d7951ce24b9426df5324305.jpg"
+                      alt="Students"
+                      className="h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-[1.05] group-hover:brightness-[0.65]"
+                    />
+
+                    {/* OVERLAY */}
+                    <div className="absolute inset-0 bg-black/30 opacity-0 transition-all duration-500 group-hover:opacity-100" />
+
+                    {/* TEXT */}
+                    <div className="absolute inset-0 z-20 flex items-center justify-center px-4">
+
+                      <div className="text-center">
+
+                        <div className="overflow-hidden">
+                          <h3 className="translate-x-[-120%] text-2xl font-semibold tracking-[-0.03em] text-white opacity-0 transition-all duration-700 ease-out group-hover:translate-x-0 group-hover:opacity-100 sm:text-3xl">
+                            Excellence
+                          </h3>
+                        </div>
+
+                        <div className="overflow-hidden">
+                          <p className="mt-3 translate-x-[-120%] text-xs leading-7 text-white/80 opacity-0 transition-all duration-700 delay-100 ease-out group-hover:translate-x-0 group-hover:opacity-100 sm:text-sm">
+                            Inspiring students through creativity and learning.
+                          </p>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              {/* STATS */}
+              <div
+                className={`grid grid-cols-2 border-t border-[#e5e7eb] ${
+                  visible
+                    ? "animate-[fadeUp_.7s_cubic-bezier(0.22,1,0.36,1)_both]"
+                    : "opacity-0"
                 }`}
               >
 
-                {/* ICON */}
-                <div className="relative z-10 w-20 h-20 rounded-full bg-white border border-[#edf1f7] shadow-[0_10px_40px_rgba(15,34,74,0.06)] flex items-center justify-center text-orange-500 mb-6 hover:scale-110 transition-transform duration-300">
+                <div className="border-r border-[#e5e7eb] py-5 pr-4 sm:pr-6">
 
-                  {/* INNER CIRCLE */}
-                  <div className="absolute inset-2 rounded-full bg-orange-50" />
+                  <h3 className="text-[40px] font-medium leading-none tracking-[-0.04em] text-[#0f224a] sm:text-[64px]">
+                    {count1}+
+                  </h3>
 
-                  <div className="relative z-10">
-                    {item.icon}
-                  </div>
+                  <p className="mt-2 text-xs leading-6 text-[#667085] sm:text-sm sm:leading-7">
+                    Years Of Excellence
+                  </p>
+
                 </div>
 
-                {/* DOT */}
-                <div className="hidden lg:block absolute top-[38px] w-4 h-4 rounded-full bg-orange-500 border-[5px] border-white shadow-md" />
+                <div className="py-5 pl-4 sm:pl-6">
 
-                {/* NUMBER */}
-                <h3
-                  className="text-[#0f224a] text-[58px] sm:text-[66px] leading-none tracking-[-0.04em] font-medium mb-3"
-                  style={{
-                    fontFamily: "'Barlow', sans-serif",
-                  }}
+                  <h3 className="text-[40px] font-medium leading-none tracking-[-0.04em] text-[#0f224a] sm:text-[64px]">
+                    {count2}+
+                  </h3>
+
+                  <p className="mt-2 text-xs leading-6 text-[#667085] sm:text-sm sm:leading-7">
+                    Dedicated Educators
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            {/* RIGHT */}
+            <div className="flex flex-col gap-6">
+
+              {/* CONTENT */}
+              <div>
+
+                <p
+                  className={`mb-4 text-[10px] font-bold uppercase tracking-[6px] text-orange-500 sm:text-xs ${
+                    visible
+                      ? "animate-[fadeUp_.7s_cubic-bezier(0.22,1,0.36,1)_both]"
+                      : "opacity-0"
+                  }`}
                 >
-                  {item.number}
-                </h3>
+                  OUR JOURNEY
+                </p>
 
-                {/* TITLE */}
-                <h4
-                  className="text-[#0f224a] text-[22px] sm:text-[24px] leading-[1.15] tracking-[-0.02em] font-medium mb-4"
-                  style={{
-                    fontFamily: "'Barlow', sans-serif",
-                  }}
+                <h2 className="text-3xl font-medium leading-[1.05] tracking-[-0.03em] text-[#0f224a] sm:text-4xl lg:text-[52px]">
+
+                  {visible && (
+                    <>
+                      <AnimatedWords
+                        text="The Right Education"
+                        baseDelay={120}
+                      />
+
+                      <span className="block text-orange-500">
+                        <AnimatedWords
+                          text="Creates Bright Futures."
+                          baseDelay={380}
+                        />
+                      </span>
+                    </>
+                  )}
+
+                </h2>
+
+                <p
+                  className={`mt-4 max-w-lg text-sm leading-8 text-[#667085] sm:text-[15px] ${
+                    visible
+                      ? "animate-[fadeUp_.7s_cubic-bezier(0.22,1,0.36,1)_both]"
+                      : "opacity-0"
+                  }`}
                 >
-                  {item.title}
-                </h4>
-
-                {/* SMALL LINE */}
-                <div className="w-12 h-[2px] bg-orange-500 mb-5" />
-
-                {/* TEXT */}
-                <p className="text-gray-500 text-sm sm:text-base leading-7 max-w-[240px]">
-                  Creating a learning environment focused
-                  on growth, creativity, and success.
+                  Building confident learners through modern education,
+                  creativity, discipline, and real classroom experiences.
                 </p>
 
               </div>
-            ))}
+
+              {/* IMAGE */}
+              <div
+                className={`group pb-4 pr-4 sm:pb-6 sm:pr-6 ${
+                  visible
+                    ? "animate-[fadeUp_.7s_cubic-bezier(0.22,1,0.36,1)_both]"
+                    : "opacity-0"
+                }`}
+              >
+                <div className="relative overflow-visible">
+
+                  {/* FRAME */}
+                  <div className="absolute -bottom-4 -right-4 h-full w-full rounded-[4px] border-2 border-[#d9dee8] sm:-bottom-6 sm:-right-6" />
+
+                  {/* IMAGE */}
+                  <div className="relative z-10 h-[220px] overflow-hidden rounded-[4px] bg-[#f6f6f6] sm:h-[320px] lg:h-[400px]">
+
+                    <img
+                      src="https://i.pinimg.com/736x/db/d6/71/dbd671872d58802732652ed49697c86b.jpg"
+                      alt="School Students"
+                      className="h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-[1.05] group-hover:brightness-[0.65]"
+                    />
+
+                    {/* OVERLAY */}
+                    <div className="absolute inset-0 bg-black/30 opacity-0 transition-all duration-500 group-hover:opacity-100" />
+
+                    {/* TEXT */}
+                    <div className="absolute inset-0 z-20 flex items-center justify-center px-4">
+
+                      <div className="text-center">
+
+                        <div className="overflow-hidden">
+                          <h3 className="translate-x-[120%] text-2xl font-semibold tracking-[-0.03em] text-white opacity-0 transition-all duration-700 ease-out group-hover:translate-x-0 group-hover:opacity-100 sm:text-3xl">
+                            Innovation
+                          </h3>
+                        </div>
+
+                        <div className="overflow-hidden">
+                          <p className="mt-3 translate-x-[120%] text-xs leading-7 text-white/80 opacity-0 transition-all duration-700 delay-100 ease-out group-hover:translate-x-0 group-hover:opacity-100 sm:text-sm">
+                            Empowering students with modern learning methods.
+                          </p>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
+
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
