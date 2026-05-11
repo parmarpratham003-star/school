@@ -13,9 +13,8 @@ export default function About() {
       <AboutHeroSection />
       <AboutSection />
       <WhoWeAre />
-      <Journey />
-      
-  <FAQSection />
+      <Journey /> 
+      <FAQSection />
       <NewsletterCTA /> 
     </>
   );

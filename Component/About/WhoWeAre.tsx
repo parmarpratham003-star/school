@@ -85,7 +85,7 @@ export default function WhoWeAre() {
               WHO WE ARE
             </p>
 
-            <h2 className="hero-title text-[#071c4d] text-3xl sm:text-[46px] lg:text-[52px] leading-[1.1] tracking-[-0.02em]">
+            <h2 className="hero-title text-[#071c4d] text-3xl sm:text-[44px] lg:text-[44px] leading-[1.1] tracking-[-0.02em]">
 
               <span className="word w1">
                 Building{" "}
@@ -119,7 +119,7 @@ export default function WhoWeAre() {
           {/* RIGHT */}
           <div className="flex flex-col justify-start">
 
-            <p className="desc-anim text-gray-500 text-sm pt-12 sm:text-base pb-5 lg:text-[18px] leading-8 max-w-xl">
+            <p className="desc-anim text-gray-500 text-sm pt-12 sm:text-base pb-5 lg:text-[15px] leading-8 max-w-xl">
               We are a learning community committed to
               excellence in education and overall student
               development. Our goal is to help every child

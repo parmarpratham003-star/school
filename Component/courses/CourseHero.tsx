@@ -71,7 +71,7 @@ export default function CoursesHero() {
                 fontFamily: "'Barlow', sans-serif",
                 fontWeight: 500,
               }}
-              className="text-[#14285f] -mt-20 sm:-mt-10 lg:-mt-34 text-[30px] leading-[1.1] sm:text-[46px] lg:text-[58px] mb-4 sm:mb-5 tracking-[-0.02em] font-medium px-2"
+              className="text-[#14285f] -mt-20 sm:-mt-10 lg:-mt-38 text-[30px] leading-[1.1] sm:text-[46px] lg:text-[58px] mb-4 sm:mb-5 tracking-[-0.02em] font-medium px-2"
             >
 
               Explore Our{" "}

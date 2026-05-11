@@ -66,7 +66,7 @@ export default function FAQSection() {
               FAQ
             </p>
 
-            <h2 className="text-3xl font-bold leading-[1.1] text-[#0f224a] sm:text-4xl lg:text-[45px]">
+            <h2 className="text-3xl font-bold leading-[1.1] text-[#0f224a] sm:text-4xl lg:text-[44px]">
               Questions About
               <br />
               <span className="text-orange-500">

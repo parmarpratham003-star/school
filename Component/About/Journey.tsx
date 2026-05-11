@@ -253,7 +253,7 @@ export default function Journey() {
                   OUR JOURNEY
                 </p>
 
-                <h2 className="text-3xl font-medium leading-[1.05] tracking-[-0.03em] text-[#0f224a] sm:text-4xl lg:text-[52px]">
+                <h2 className="text-3xl font-medium leading-[1.05] tracking-[-0.03em] text-[#0f224a] sm:text-4xl lg:text-[44px]">
 
                   {visible && (
                     <>
