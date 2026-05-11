@@ -53,14 +53,12 @@ export default function CoursesHero() {
           className="w-full h-full object-cover object-center"
         />
 
-      
-
       </div>
 
       {/* CONTENT */}
       <div className="relative z-10 px-4 sm:px-6 lg:px-14">
 
-        <div className="min-h-[720px] flex items-center justify-center pt-24 sm:pt-0 sm:-mt-20 lg:-mt-30">
+        <div className="min-h-[520px] sm:min-h-[620px] lg:min-h-[720px] flex items-center justify-center pt-0 sm:pt-0 sm:-mt-20 lg:-mt-30">
 
           <div className="max-w-[760px] w-full text-center">
 
@@ -73,7 +71,7 @@ export default function CoursesHero() {
                 fontFamily: "'Barlow', sans-serif",
                 fontWeight: 500,
               }}
-              className="text-[#14285f] lg:-mt-34 text-[32px] leading-[1.08] sm:text-[46px] lg:text-[58px] mb-5 tracking-[-0.02em] font-medium"
+              className="text-[#14285f] -mt-20 sm:-mt-10 lg:-mt-34 text-[30px] leading-[1.1] sm:text-[46px] lg:text-[58px] mb-4 sm:mb-5 tracking-[-0.02em] font-medium px-2"
             >
 
               Explore Our{" "}
@@ -89,7 +87,7 @@ export default function CoursesHero() {
               data-reveal
               data-delay="500"
               style={revealStyle()}
-              className="text-[#4b5563] text-sm sm:text-base md:text-[17px] font-normal leading-7 sm:leading-8 max-w-[580px] mx-auto"
+              className="text-[#4b5563] text-[14px] sm:text-base md:text-[17px] font-normal leading-7 sm:leading-8 max-w-[580px] mx-auto px-2"
             >
               Discover engaging academic programs and skill-based
               learning designed to help students grow with confidence,
