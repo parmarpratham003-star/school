@@ -118,7 +118,7 @@ export default function AboutSection() {
               {/* IMAGE 1 */}
               <div className="overflow-hidden rounded-sm w-[72%]">
                 <img
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop"
+                  src="https://i.pinimg.com/1200x/f0/33/c9/f033c9d85f6d50be3377ac1c9b83de4c.jpg"
                   alt="Students"
                   className="zoom-img w-full h-[220px] sm:h-[280px] lg:h-[320px] object-cover rounded-sm"
                 />
@@ -127,7 +127,7 @@ export default function AboutSection() {
               {/* IMAGE 2 */}
               <div className="overflow-hidden rounded-sm w-[72%] ml-auto -mt-8 sm:-mt-10">
                 <img
-                  src="https://images.unsplash.com/photo-1529390079861-591de354faf5?q=80&w=1200&auto=format&fit=crop"
+                  src="https://i.pinimg.com/736x/9c/49/b2/9c49b20a043b475fc92f416a52da3a32.jpg"
                   alt="Students Learning"
                   className="zoom-img w-full h-[220px] sm:h-[280px] lg:h-[320px] object-cover rounded-sm"
                 />
@@ -209,7 +209,7 @@ export default function AboutSection() {
 
                 <span className="relative z-10 flex items-center gap-2">
                   Read More
-                  <ArrowUpRight size={15} />
+                 
                 </span>
               </button>
 

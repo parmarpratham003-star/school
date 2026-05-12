@@ -240,7 +240,7 @@ export default function FeaturedCourses() {
   }
 
   return (
-    <section ref={sectionRef} className="relative py-16 sm:py-24 bg-[#f7f7f7] overflow-hidden">
+    <section ref={sectionRef} className="relative py-16 sm:py-24 bg-white overflow-hidden">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap');
         * { font-family: 'Barlow', sans-serif; }
@@ -274,7 +274,7 @@ export default function FeaturedCourses() {
             FEATURED COURSES
           </p>
 
-          <h2 className="text-[#14285f] text-[32px] sm:text-[50px] lg:text-[58px] leading-[1.08] font-medium flex flex-wrap justify-center gap-x-3 sm:gap-x-4">
+          <h2 className="text-[#14285f] text-[32px] sm:text-[50px] lg:text-[44px] leading-[1.08] font-medium flex flex-wrap justify-center gap-x-3 sm:gap-x-4">
             <span
               className={`inline-block anim-word-1 ${headingVisible ? "anim-running" : "anim-paused"}`}
               style={{ opacity: headingVisible ? undefined : 0 }}

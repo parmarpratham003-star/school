@@ -69,7 +69,7 @@ const keyframesStyle = `
 
 export default function WhoWeAre() {
   return (
-    <section className="w-full bg-white pt-20 sm:pt-10 pb-16 overflow-hidden">
+    <section className="w-full bg-white pt-20 sm:pt-3 pb-16 overflow-hidden">
 
       <style>{keyframesStyle}</style>
 

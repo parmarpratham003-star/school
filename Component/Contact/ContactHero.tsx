@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 
-export default function CoursesHero() {
+export default function ContactHero() {
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -46,8 +46,8 @@ export default function CoursesHero() {
       {/* BACKGROUND IMAGE */}
       <div className="absolute inset-0">
         <img
-          src="AC3.png"
-          alt="Courses Hero"
+          src="Contact.png"
+          alt="Contact Hero"
           className="w-full h-full object-cover object-center"
         />
       </div>
@@ -72,7 +72,7 @@ export default function CoursesHero() {
                 text-[#14285f]
                 mt-4
                 sm:-mt-10
-                lg:-mt-45
+                lg:-mt-40
                 text-[28px]
                 leading-[1.15]
                 sm:text-[46px]
@@ -84,9 +84,9 @@ export default function CoursesHero() {
                 px-2
               "
             >
-              Explore Our{" "}
+              Contact {" "}
               <span className="text-[#ff6b00]">
-                Courses
+                Us
               </span>
             </h1>
 
@@ -103,14 +103,14 @@ export default function CoursesHero() {
                 font-normal
                 leading-6
                 sm:leading-8
-                max-w-[580px]
+                max-w-[650px]
                 mx-auto
                 px-3
               "
             >
-              Discover engaging academic programs and skill-based
-              learning designed to help students grow with confidence,
-              creativity, and excellence.
+              We’re here to answer your questions and help you learn
+              more about admissions, academics, and student life.
+              Reach out to our team anytime for guidance and support.
             </p>
 
           </div>
