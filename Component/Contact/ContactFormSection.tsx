@@ -6,7 +6,7 @@ import React, {
   useRef,
 } from "react";
 
-export default function ContactSection() {
+export default function ContactFormSection() {
   const [mounted, setMounted] =
     useState(false);
 
@@ -146,9 +146,9 @@ export default function ContactSection() {
         ref={sectionRef}
         className="w-full bg-white pt-16 sm:pt-20 pb-16 sm:pb-20 overflow-hidden"
       >
-        <div className="px-4 sm:px-6 lg:px-10">
+        <div className="px-5 sm:px-10 lg:px-20 xl:px-30">
 
-          <div className="cf-grid grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+          <div className="cf-grid grid grid-cols-1 lg:grid-cols-[0.92fr_1fr] gap-6 lg:gap-8 items-start">
 
             {/* ── LEFT ── */}
             <div>
@@ -166,7 +166,7 @@ export default function ContactSection() {
                 data-reveal
                 data-delay="140"
                 style={revealStyle}
-                className="cf-barlow font-medium text-[#14285f] text-[32px] sm:text-[42px] lg:text-[52px] leading-[1.1] mb-3 max-w-[560px]"
+                className="cf-barlow font-medium text-[#14285f] text-[32px] sm:text-[42px] lg:text-[44px] leading-[1.1] mb-3 max-w-[560px]"
               >
                 Let's Build a Bright <br />
 

@@ -115,7 +115,7 @@ export default function MapSection() {
         ref={sectionRef}
         className="w-full bg-white pb-16 sm:pb-20 overflow-hidden"
       >
-        <div className="px-4 sm:px-6 lg:px-10">
+        <div className="px-5 sm:px-10 lg:px-20 xl:px-30">
 
           {/* OUTER BORDER WRAPPER */}
           <div

@@ -69,19 +69,19 @@ const keyframesStyle = `
 
 export default function WhoWeAre() {
   return (
-    <section className="w-full bg-white pt-20 sm:pt-3 pb-16 overflow-hidden">
+    <section className="w-full bg-white pt-8 sm:pt-3 pb-16 overflow-hidden">
 
       <style>{keyframesStyle}</style>
 
       <div className="px-4 sm:px-6 lg:px-10">
 
         {/* TOP SECTION */}
-        <div className="grid lg:grid-cols-2 gap-12 items-start mb-8">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-10 items-start mb-6">
 
           {/* LEFT */}
           <div>
 
-            <p className="lbl-anim text-[#f97316] uppercase tracking-[4px] sm:tracking-[5px] font-bold text-[10px] sm:text-sm mb-3">
+             <p className="text-orange-500 uppercase tracking-[4px] font-bold text-[10px] sm:text-xs mb-3">
               WHO WE ARE
             </p>
 
@@ -107,7 +107,7 @@ export default function WhoWeAre() {
                 Quality{" "}
               </span>
 
-              <br />
+            
 
               <span className="word w6 text-[#f97316]">
                 Education
@@ -119,7 +119,7 @@ export default function WhoWeAre() {
           {/* RIGHT */}
           <div className="flex flex-col justify-start">
 
-            <p className="desc-anim text-gray-500 text-sm pt-12 sm:text-base pb-5 lg:text-[15px] leading-8 max-w-xl">
+            <p className="desc-anim text-gray-500 text-sm pt-2 sm:pt-5 sm:text-base pb-4 lg:text-[15px] leading-7 sm:leading-8 max-w-xl">
               We are a learning community committed to
               excellence in education and overall student
               development. Our goal is to help every child
@@ -143,6 +143,29 @@ export default function WhoWeAre() {
         {/* IMAGE CARDS */}
         <div className="grid lg:grid-cols-2 gap-8">
 
+        {/* VISION */}
+          <div className="relative overflow-hidden rounded-[3px] cursor-pointer h-[400px] group">
+
+            <img
+              src="https://i.pinimg.com/1200x/38/2d/75/382d759685d258aa0f2c14e758f24e57.jpg"
+              alt="Vision"
+              className="w-full h-full object-cover block transition-transform duration-700 group-hover:scale-105"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/75 transition-all duration-400 group-hover:from-black/15 group-hover:to-black/85" />
+
+            <div className="absolute left-7 right-7 bottom-7 text-white hero-title text-[34px] sm:text-[38px] tracking-tight [text-shadow:0_2px_12px_rgba(0,0,0,0.4)] transition-all duration-[450ms] group-hover:bottom-[90px]">
+              Our Vision
+            </div>
+
+            <div className="absolute left-7 right-7 bottom-7 text-white/90 text-[15px] leading-[1.7] opacity-0 translate-y-4 transition-all duration-400 delay-100 group-hover:opacity-100 group-hover:translate-y-0">
+              To create a supportive and dynamic learning
+              environment where students are encouraged to
+              think, learn, and grow into future ready
+              individuals.
+            </div>
+          </div>
+          
           {/* MISSION */}
           <div className="relative overflow-hidden rounded-[3px] cursor-pointer h-[400px] group">
 
@@ -165,28 +188,7 @@ export default function WhoWeAre() {
             </div>
           </div>
 
-          {/* VISION */}
-          <div className="relative overflow-hidden rounded-[3px] cursor-pointer h-[400px] group">
-
-            <img
-              src="https://i.pinimg.com/1200x/38/2d/75/382d759685d258aa0f2c14e758f24e57.jpg"
-              alt="Vision"
-              className="w-full h-full object-cover block transition-transform duration-700 group-hover:scale-105"
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/75 transition-all duration-400 group-hover:from-black/15 group-hover:to-black/85" />
-
-            <div className="absolute left-7 right-7 bottom-7 text-white hero-title text-[34px] sm:text-[38px] tracking-tight [text-shadow:0_2px_12px_rgba(0,0,0,0.4)] transition-all duration-[450ms] group-hover:bottom-[90px]">
-              Our Vision
-            </div>
-
-            <div className="absolute left-7 right-7 bottom-7 text-white/90 text-[15px] leading-[1.7] opacity-0 translate-y-4 transition-all duration-400 delay-100 group-hover:opacity-100 group-hover:translate-y-0">
-              To create a supportive and dynamic learning
-              environment where students are encouraged to
-              think, learn, and grow into future ready
-              individuals.
-            </div>
-          </div>
+          
 
         </div>
       </div>

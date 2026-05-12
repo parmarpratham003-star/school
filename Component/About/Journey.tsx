@@ -1,6 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 /* COUNTER */
 function useCounter(
@@ -17,25 +21,32 @@ function useCounter(
 
     const startTime = performance.now();
 
-    const update = (currentTime: number) => {
+    const update = (
+      currentTime: number
+    ) => {
       const progress = Math.min(
-        (currentTime - startTime) / duration,
+        (currentTime - startTime) /
+          duration,
         1
       );
 
       const eased =
         1 - Math.pow(1 - progress, 3);
 
-      setValue(Math.round(eased * target));
+      setValue(
+        Math.round(eased * target)
+      );
 
       if (progress < 1) {
-        raf = requestAnimationFrame(update);
+        raf =
+          requestAnimationFrame(update);
       }
     };
 
     raf = requestAnimationFrame(update);
 
-    return () => cancelAnimationFrame(raf);
+    return () =>
+      cancelAnimationFrame(raf);
   }, [target, duration, start]);
 
   return value;
@@ -71,36 +82,69 @@ function AnimatedWords({
 }
 
 export default function Journey() {
-  const ref = useRef<HTMLDivElement | null>(null);
+  const ref =
+    useRef<HTMLDivElement | null>(
+      null
+    );
 
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] =
+    useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-        }
-      },
-      { threshold: 0.12 }
-    );
+    const observer =
+      new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+          }
+        },
+        { threshold: 0.12 }
+      );
 
     if (ref.current) {
       observer.observe(ref.current);
     }
 
-    return () => observer.disconnect();
+    return () =>
+      observer.disconnect();
   }, []);
 
-  const count1 = useCounter(10, 1600, visible);
-  const count2 = useCounter(50, 1900, visible);
+  const count1 = useCounter(
+    10,
+    1600,
+    visible
+  );
+
+  const count2 = useCounter(
+    50,
+    1900,
+    visible
+  );
 
   return (
     <>
-      <style jsx>{`
+      {/* GOOGLE FONTS */}
+      <style jsx global>{`
+        @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&display=swap");
+
+        * {
+          font-family: "Lato",
+            sans-serif;
+        }
+
+        .hero-title {
+          font-family: "Barlow",
+            sans-serif;
+          font-weight: 500;
+          letter-spacing: -0.02em;
+        }
+
         @keyframes wordRise {
           from {
-            transform: translateY(110%);
+            transform: translateY(
+              110%
+            );
             opacity: 0;
           }
           to {
@@ -112,7 +156,9 @@ export default function Journey() {
         @keyframes fadeUp {
           from {
             opacity: 0;
-            transform: translateY(24px);
+            transform: translateY(
+              24px
+            );
           }
           to {
             opacity: 1;
@@ -124,20 +170,20 @@ export default function Journey() {
       <section
         ref={ref}
         className="relative overflow-hidden bg-white py-10 sm:py-12 lg:py-8"
-        style={{
-          fontFamily: "'Barlow', sans-serif",
-        }}
       >
         {/* DOT BACKGROUND */}
         <div className="absolute inset-0 opacity-[0.04]">
+
           <div
             className="h-full w-full"
             style={{
               backgroundImage:
                 "radial-gradient(circle, #0f224a 1px, transparent 1px)",
-              backgroundSize: "22px 22px",
+              backgroundSize:
+                "22px 22px",
             }}
           />
+
         </div>
 
         {/* CONTAINER */}
@@ -156,6 +202,7 @@ export default function Journey() {
                     : "opacity-0"
                 }`}
               >
+
                 <div className="relative overflow-visible">
 
                   {/* FRAME */}
@@ -179,15 +226,19 @@ export default function Journey() {
                       <div className="text-center">
 
                         <div className="overflow-hidden">
-                          <h3 className="translate-x-[-120%] text-2xl font-semibold tracking-[-0.03em] text-white opacity-0 transition-all duration-700 ease-out group-hover:translate-x-0 group-hover:opacity-100 sm:text-3xl">
+
+                          <h3 className="hero-title translate-x-[-120%] text-2xl tracking-[-0.03em] text-white opacity-0 transition-all duration-700 ease-out group-hover:translate-x-0 group-hover:opacity-100 sm:text-3xl">
                             Excellence
                           </h3>
+
                         </div>
 
                         <div className="overflow-hidden">
+
                           <p className="mt-3 translate-x-[-120%] text-xs leading-7 text-white/80 opacity-0 transition-all duration-700 delay-100 ease-out group-hover:translate-x-0 group-hover:opacity-100 sm:text-sm">
                             Inspiring students through creativity and learning.
                           </p>
+
                         </div>
 
                       </div>
@@ -211,7 +262,7 @@ export default function Journey() {
 
                 <div className="border-r border-[#e5e7eb] py-5 pr-4 sm:pr-6">
 
-                  <h3 className="text-[40px] font-medium leading-none tracking-[-0.04em] text-[#0f224a] sm:text-[64px]">
+                  <h3 className="hero-title text-[#0f1e45] text-[40px] sm:text-[64px] leading-none tracking-[-0.02em]">
                     {count1}+
                   </h3>
 
@@ -223,7 +274,7 @@ export default function Journey() {
 
                 <div className="py-5 pl-4 sm:pl-6">
 
-                  <h3 className="text-[40px] font-medium leading-none tracking-[-0.04em] text-[#0f224a] sm:text-[64px]">
+                  <h3 className="hero-title text-[#0f1e45] text-[40px] sm:text-[64px] leading-none tracking-[-0.02em]">
                     {count2}+
                   </h3>
 
@@ -244,7 +295,7 @@ export default function Journey() {
               <div>
 
                 <p
-                  className={`mb-4 text-[10px] font-bold uppercase tracking-[6px] text-orange-500 sm:text-xs ${
+                  className={`text-orange-500 uppercase tracking-[4px] font-bold text-[10px] sm:text-xs mb-3 ${
                     visible
                       ? "animate-[fadeUp_.7s_cubic-bezier(0.22,1,0.36,1)_both]"
                       : "opacity-0"
@@ -253,7 +304,7 @@ export default function Journey() {
                   OUR JOURNEY
                 </p>
 
-                <h2 className="text-3xl font-medium leading-[1.05] tracking-[-0.03em] text-[#0f224a] sm:text-4xl lg:text-[44px]">
+                <h2 className="hero-title text-[#0f1e45] text-[28px] sm:text-[36px] lg:text-[44px] leading-[1.18] mb-4 sm:mb-5 tracking-[-0.02em]">
 
                   {visible && (
                     <>
@@ -263,10 +314,12 @@ export default function Journey() {
                       />
 
                       <span className="block text-orange-500">
+
                         <AnimatedWords
                           text="Creates Bright Futures."
                           baseDelay={380}
                         />
+
                       </span>
                     </>
                   )}
@@ -274,7 +327,7 @@ export default function Journey() {
                 </h2>
 
                 <p
-                  className={`mt-4 max-w-lg text-sm leading-8 text-[#667085] sm:text-[15px] ${
+                  className={`text-gray-500 text-sm sm:text-base font-normal leading-7 sm:leading-8 max-w-xl ${
                     visible
                       ? "animate-[fadeUp_.7s_cubic-bezier(0.22,1,0.36,1)_both]"
                       : "opacity-0"
@@ -294,6 +347,7 @@ export default function Journey() {
                     : "opacity-0"
                 }`}
               >
+
                 <div className="relative overflow-visible">
 
                   {/* FRAME */}
@@ -317,15 +371,19 @@ export default function Journey() {
                       <div className="text-center">
 
                         <div className="overflow-hidden">
-                          <h3 className="translate-x-[120%] text-2xl font-semibold tracking-[-0.03em] text-white opacity-0 transition-all duration-700 ease-out group-hover:translate-x-0 group-hover:opacity-100 sm:text-3xl">
+
+                          <h3 className="hero-title translate-x-[120%] text-2xl tracking-[-0.03em] text-white opacity-0 transition-all duration-700 ease-out group-hover:translate-x-0 group-hover:opacity-100 sm:text-3xl">
                             Innovation
                           </h3>
+
                         </div>
 
                         <div className="overflow-hidden">
+
                           <p className="mt-3 translate-x-[120%] text-xs leading-7 text-white/80 opacity-0 transition-all duration-700 delay-100 ease-out group-hover:translate-x-0 group-hover:opacity-100 sm:text-sm">
                             Empowering students with modern learning methods.
                           </p>
+
                         </div>
 
                       </div>
