@@ -59,59 +59,61 @@ export default function ContactHero() {
 
           <div className="max-w-[720px] w-full text-center">
 
-            {/* HEADING */}
-            <h1
-              data-reveal
-              data-delay="260"
-              style={{
-                ...revealStyle(),
-                fontFamily: "'Barlow', sans-serif",
-                fontWeight: 500,
-              }}
-              className="
-                text-[#14285f]
-                mt-4
-                sm:-mt-10
-                lg:-mt-40
-                text-[28px]
-                leading-[1.15]
-                sm:text-[46px]
-                lg:text-[58px]
-                mb-4
-                sm:mb-5
-                tracking-[-0.02em]
-                font-medium
-                px-2
-              "
-            >
-              Contact {" "}
-              <span className="text-[#ff6b00]">
-                Us
-              </span>
-            </h1>
+           {/* HEADING */}
+<h1
+  data-reveal
+  data-delay="260"
+  style={{
+    ...revealStyle(),
+    fontFamily: "'Barlow', sans-serif",
+    fontWeight: 500,
+  }}
+  className="
+    text-[#14285f]
+    mt-4
+    sm:-mt-10
+    lg:-mt-40
+    text-[28px]
+    leading-[1.15]
+    sm:text-[46px]
+    lg:text-[58px]
+    mb-4
+    sm:mb-5
+    tracking-[-0.02em]
+    font-medium
+    px-2
+  "
+>
+  Connect{" "}
 
-            {/* DESCRIPTION */}
-            <p
-              data-reveal
-              data-delay="500"
-              style={revealStyle()}
-              className="
-                text-[#4b5563]
-                text-[14px]
-                sm:text-base
-                md:text-[17px]
-                font-normal
-                leading-6
-                sm:leading-8
-                max-w-[650px]
-                mx-auto
-                px-3
-              "
-            >
-              We’re here to answer your questions and help you learn
-              more about admissions, academics, and student life.
-              Reach out to our team anytime for guidance and support.
-            </p>
+  <span className="text-[#ff6b00]">
+    With Us
+  </span>
+</h1>
+
+{/* DESCRIPTION */}
+<p
+  data-reveal
+  data-delay="500"
+  style={revealStyle()}
+  className="
+    text-[#4b5563]
+    text-[14px]
+    sm:text-base
+    md:text-[17px]
+    font-normal
+    leading-6
+    sm:leading-8
+    max-w-[650px]
+    mx-auto
+    px-3
+  "
+>
+  Reach out to our school for admissions,
+  academic guidance, campus information,
+  and student support. We are always happy
+  to connect with parents and students.
+</p>
 
           </div>
         </div>
